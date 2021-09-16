@@ -1,7 +1,7 @@
 import express from 'express';
 
 const app = express();
-const PORT = 8000 | process.env.PORT;
+const PORT = 8000 | process.env.DATABASE_URL;
 
 app.get('/', (req, res) => {
   res.send('S2팀');

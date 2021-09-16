@@ -1,0 +1,114 @@
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+  output   = "../src/generated/client"
+}
+
+model Allergies {
+  id              Int                @id @default(autoincrement())
+  name            String
+  allergies_drink Allergies_drinks[]
+
+  @@map("allergies")
+}
+
+model Allergies_drinks {
+  id           Int       @id @default(autoincrement())
+  allergies_id Int
+  drinks_id    Int
+  allergie     Allergies @relation(fields: [allergies_id], references: [id])
+  drink        Drinks    @relation(fields: [drinks_id], references: [id])
+
+  @@map("allergies_drinks")
+}
+
+model Categories {
+  id   Int    @id @default(autoincrement())
+  name String
+
+  Drinks Drinks[]
+  @@map("categories")
+}
+
+model Comments {
+  id         Int      @id @default(autoincrement())
+  user_id    Int
+  drinks_id  Int
+  contents   String
+  created_at DateTime @default(now())
+  updated_at DateTime @default(now())
+  user       Users    @relation(fields: [user_id], references: [id])
+  drink      Drinks   @relation(fields: [drinks_id], references: [id])
+
+  @@map("comments")
+}
+
+model Drinks {
+  id            Int        @id @default(autoincrement())
+  categories_id Int
+  korean_name   String
+  english_name  String
+  description   String
+  is_new        Int        @db.TinyInt
+  category      Categories @relation(fields: [categories_id], references: [id])
+
+  Allergies_drinks Allergies_drinks[]
+  Comments         Comments[]
+  Images           Images[]
+  Likes            Likes[]
+  Nutrition        Nutrition[]
+  @@map("drinks")
+}
+
+model Images {
+  id         Int    @id @default(autoincrement())
+  drinks_id  Int
+  images_url String
+  drink      Drinks @relation(fields: [drinks_id], references: [id])
+
+  @@map("images")
+}
+
+model Likes {
+  id        Int    @id @default(autoincrement())
+  user_id   Int
+  drinks_id Int
+  user      Users  @relation(fields: [user_id], references: [id])
+  drink     Drinks @relation(fields: [drinks_id], references: [id])
+
+  @@map("likes")
+}
+
+model Nutrition {
+  id        Int    @id @default(autoincrement())
+  drinks_id Int
+  calories  Float  @db.Double
+  natrium   Float  @db.Double
+  fat       Float  @db.Double
+  sugars    Float  @db.Double
+  protein   Float  @db.Double
+  caffeine  Float  @db.Double
+  drink     Drinks @relation(fields: [drinks_id], references: [id])
+
+  @@map("nutrition")
+}
+
+model Users {
+  id            Int        @id @default(autoincrement())
+  email         String     @unique
+  password      String
+  username      String?
+  address       String?
+  phone_number  String?
+  policy_agreed Boolean    @default(true) @db.TinyInt
+  created_at    DateTime?  @default(now())
+  updated_at    DateTime?  @updatedAt
+  Comments      Comments[]
+  Likes         Likes[]
+
+  @@map("users")
+}
