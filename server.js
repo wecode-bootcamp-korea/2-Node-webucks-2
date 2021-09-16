@@ -1,7 +1,20 @@
 import express from 'express';
+import dotenv from 'dotenv';
+import { PrismaClient } from '@prisma/client';
 
+const prisma = new PrismaClient();
+
+dotenv.config();
 const app = express();
 const PORT = 8000 | process.env.PORT;
+
+app.post('/comments', async (req, res) => {
+  prisma.articles.create({
+    data: {
+      name: '제목',
+    },
+  });
+});
 
 app.get('/', (req, res) => {
   res.send('S2팀');
