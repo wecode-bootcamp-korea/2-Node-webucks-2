@@ -83,8 +83,8 @@ exports.Prisma.AllergiesScalarFieldEnum = makeEnum({
 
 exports.Prisma.Allergies_drinksScalarFieldEnum = makeEnum({
   id: 'id',
-  allergies_id: 'allergies_id',
-  drinks_id: 'drinks_id'
+  allergiesId: 'allergiesId',
+  drinksId: 'drinksId'
 });
 
 exports.Prisma.CategoriesScalarFieldEnum = makeEnum({
@@ -94,41 +94,41 @@ exports.Prisma.CategoriesScalarFieldEnum = makeEnum({
 
 exports.Prisma.CommentsScalarFieldEnum = makeEnum({
   id: 'id',
-  user_id: 'user_id',
-  drinks_id: 'drinks_id',
-  contents: 'contents',
+  userId: 'userId',
+  drinksId: 'drinksId',
+  content: 'content',
   created_at: 'created_at',
   updated_at: 'updated_at'
 });
 
 exports.Prisma.DrinksScalarFieldEnum = makeEnum({
   id: 'id',
-  categories_id: 'categories_id',
-  korean_name: 'korean_name',
-  english_name: 'english_name',
+  categoriesId: 'categoriesId',
+  koreanName: 'koreanName',
+  englishName: 'englishName',
   description: 'description',
-  is_new: 'is_new'
+  isNew: 'isNew'
 });
 
 exports.Prisma.ImagesScalarFieldEnum = makeEnum({
   id: 'id',
-  drinks_id: 'drinks_id',
-  images_url: 'images_url'
+  drinksId: 'drinksId',
+  imagesUrl: 'imagesUrl'
 });
 
 exports.Prisma.LikesScalarFieldEnum = makeEnum({
   id: 'id',
-  user_id: 'user_id',
-  drinks_id: 'drinks_id'
+  userId: 'userId',
+  drinksId: 'drinksId'
 });
 
 exports.Prisma.NutritionScalarFieldEnum = makeEnum({
   id: 'id',
-  drinks_id: 'drinks_id',
-  calories: 'calories',
+  drinksId: 'drinksId',
+  calorie: 'calorie',
   natrium: 'natrium',
   fat: 'fat',
-  sugars: 'sugars',
+  sugar: 'sugar',
   protein: 'protein',
   caffeine: 'caffeine'
 });
@@ -139,10 +139,10 @@ exports.Prisma.UsersScalarFieldEnum = makeEnum({
   password: 'password',
   username: 'username',
   address: 'address',
-  phone_number: 'phone_number',
-  policy_agreed: 'policy_agreed',
-  created_at: 'created_at',
-  updated_at: 'updated_at'
+  phoneNumber: 'phoneNumber',
+  policyAgreed: 'policyAgreed',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
 });
 
 exports.Prisma.SortOrder = makeEnum({
