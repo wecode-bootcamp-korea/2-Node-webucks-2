@@ -24,6 +24,27 @@ app.post('/categories', async (req, res) => {
 
     res.json(category);
 });
+
+app.post('/users', async (req, res) => {
+  await prisma.$queryRaw`
+    insert into users (email, password, username, address, phone_number)
+    values 
+      ('goplanit19@gmail.com', 'Goplanit19@', '고원구', '서울시', '010-1234-1111'),
+      ('ablack1029@gmail.com', 'Ablack1029@', '김원영', '서울시', '010-1234-2222'),
+      ('dlalswo4602@gmail.com', 'Dlalwso4602@', '이민재', '서울시', '010-1234-3333'),
+      ('leecoder21@gamil.com', 'Leecoder21@', '이은정', '서울시', '010-1234-4444'),
+      ('jihoonkr821@gmail.com', 'Jihoonkr821@', '한지훈', '서울시', '010-1234-5555')
+    `;
+
+    const [users] = await prisma.$queryRaw`
+      SELECT *
+      FROM users
+      ORDER BY ID DESC
+      LIMIT 6
+      `;
+
+    res.json(users);
+});
       
 app.get("/categories", async(req,res) => {
   const categories = await prisma.$queryRaw`
