@@ -27,8 +27,8 @@ export type Allergies = {
 
 export type Allergies_drinks = {
   id: number
-  allergiesId: number
-  drinksId: number
+  allergieId: number
+  drinkId: number
 }
 
 /**
@@ -47,7 +47,7 @@ export type Categories = {
 export type Comments = {
   id: number
   userId: number
-  drinksId: number
+  drinkId: number
   content: string
   created_at: Date | null
   updated_at: Date | null
@@ -59,11 +59,11 @@ export type Comments = {
 
 export type Drinks = {
   id: number
-  categoriesId: number
+  categoryId: number
   koreanName: string
   englishName: string
   description: string
-  isNew: boolean
+  isNew: number
 }
 
 /**
@@ -72,8 +72,8 @@ export type Drinks = {
 
 export type Images = {
   id: number
-  drinksId: number
-  imagesUrl: string
+  drinkId: number
+  imageUrl: string
 }
 
 /**
@@ -83,7 +83,7 @@ export type Images = {
 export type Likes = {
   id: number
   userId: number
-  drinksId: number
+  drinkId: number
 }
 
 /**
@@ -92,7 +92,7 @@ export type Likes = {
 
 export type Nutrition = {
   id: number
-  drinksId: number
+  drinkId: number
   calorie: number
   natrium: number
   fat: number
@@ -1999,64 +1999,64 @@ export namespace Prisma {
 
   export type Allergies_drinksAvgAggregateOutputType = {
     id: number | null
-    allergiesId: number | null
-    drinksId: number | null
+    allergieId: number | null
+    drinkId: number | null
   }
 
   export type Allergies_drinksSumAggregateOutputType = {
     id: number | null
-    allergiesId: number | null
-    drinksId: number | null
+    allergieId: number | null
+    drinkId: number | null
   }
 
   export type Allergies_drinksMinAggregateOutputType = {
     id: number | null
-    allergiesId: number | null
-    drinksId: number | null
+    allergieId: number | null
+    drinkId: number | null
   }
 
   export type Allergies_drinksMaxAggregateOutputType = {
     id: number | null
-    allergiesId: number | null
-    drinksId: number | null
+    allergieId: number | null
+    drinkId: number | null
   }
 
   export type Allergies_drinksCountAggregateOutputType = {
     id: number
-    allergiesId: number
-    drinksId: number
+    allergieId: number
+    drinkId: number
     _all: number
   }
 
 
   export type Allergies_drinksAvgAggregateInputType = {
     id?: true
-    allergiesId?: true
-    drinksId?: true
+    allergieId?: true
+    drinkId?: true
   }
 
   export type Allergies_drinksSumAggregateInputType = {
     id?: true
-    allergiesId?: true
-    drinksId?: true
+    allergieId?: true
+    drinkId?: true
   }
 
   export type Allergies_drinksMinAggregateInputType = {
     id?: true
-    allergiesId?: true
-    drinksId?: true
+    allergieId?: true
+    drinkId?: true
   }
 
   export type Allergies_drinksMaxAggregateInputType = {
     id?: true
-    allergiesId?: true
-    drinksId?: true
+    allergieId?: true
+    drinkId?: true
   }
 
   export type Allergies_drinksCountAggregateInputType = {
     id?: true
-    allergiesId?: true
-    drinksId?: true
+    allergieId?: true
+    drinkId?: true
     _all?: true
   }
 
@@ -2154,8 +2154,8 @@ export namespace Prisma {
 
   export type Allergies_drinksGroupByOutputType = {
     id: number
-    allergiesId: number
-    drinksId: number
+    allergieId: number
+    drinkId: number
     _count: Allergies_drinksCountAggregateOutputType | null
     _avg: Allergies_drinksAvgAggregateOutputType | null
     _sum: Allergies_drinksSumAggregateOutputType | null
@@ -2180,9 +2180,9 @@ export namespace Prisma {
   export type Allergies_drinksSelect = {
     id?: boolean
     allergie?: boolean | AllergiesArgs
-    allergiesId?: boolean
+    allergieId?: boolean
     drink?: boolean | DrinksArgs
-    drinksId?: boolean
+    drinkId?: boolean
   }
 
   export type Allergies_drinksInclude = {
@@ -3752,19 +3752,19 @@ export namespace Prisma {
   export type CommentsAvgAggregateOutputType = {
     id: number | null
     userId: number | null
-    drinksId: number | null
+    drinkId: number | null
   }
 
   export type CommentsSumAggregateOutputType = {
     id: number | null
     userId: number | null
-    drinksId: number | null
+    drinkId: number | null
   }
 
   export type CommentsMinAggregateOutputType = {
     id: number | null
     userId: number | null
-    drinksId: number | null
+    drinkId: number | null
     content: string | null
     created_at: Date | null
     updated_at: Date | null
@@ -3773,7 +3773,7 @@ export namespace Prisma {
   export type CommentsMaxAggregateOutputType = {
     id: number | null
     userId: number | null
-    drinksId: number | null
+    drinkId: number | null
     content: string | null
     created_at: Date | null
     updated_at: Date | null
@@ -3782,7 +3782,7 @@ export namespace Prisma {
   export type CommentsCountAggregateOutputType = {
     id: number
     userId: number
-    drinksId: number
+    drinkId: number
     content: number
     created_at: number
     updated_at: number
@@ -3793,19 +3793,19 @@ export namespace Prisma {
   export type CommentsAvgAggregateInputType = {
     id?: true
     userId?: true
-    drinksId?: true
+    drinkId?: true
   }
 
   export type CommentsSumAggregateInputType = {
     id?: true
     userId?: true
-    drinksId?: true
+    drinkId?: true
   }
 
   export type CommentsMinAggregateInputType = {
     id?: true
     userId?: true
-    drinksId?: true
+    drinkId?: true
     content?: true
     created_at?: true
     updated_at?: true
@@ -3814,7 +3814,7 @@ export namespace Prisma {
   export type CommentsMaxAggregateInputType = {
     id?: true
     userId?: true
-    drinksId?: true
+    drinkId?: true
     content?: true
     created_at?: true
     updated_at?: true
@@ -3823,7 +3823,7 @@ export namespace Prisma {
   export type CommentsCountAggregateInputType = {
     id?: true
     userId?: true
-    drinksId?: true
+    drinkId?: true
     content?: true
     created_at?: true
     updated_at?: true
@@ -3925,7 +3925,7 @@ export namespace Prisma {
   export type CommentsGroupByOutputType = {
     id: number
     userId: number
-    drinksId: number
+    drinkId: number
     content: string
     created_at: Date | null
     updated_at: Date | null
@@ -3955,7 +3955,7 @@ export namespace Prisma {
     user?: boolean | UsersArgs
     userId?: boolean
     drink?: boolean | DrinksArgs
-    drinksId?: boolean
+    drinkId?: boolean
     content?: boolean
     created_at?: boolean
     updated_at?: boolean
@@ -4660,35 +4660,37 @@ export namespace Prisma {
 
   export type DrinksAvgAggregateOutputType = {
     id: number | null
-    categoriesId: number | null
+    categoryId: number | null
+    isNew: number | null
   }
 
   export type DrinksSumAggregateOutputType = {
     id: number | null
-    categoriesId: number | null
+    categoryId: number | null
+    isNew: number | null
   }
 
   export type DrinksMinAggregateOutputType = {
     id: number | null
-    categoriesId: number | null
+    categoryId: number | null
     koreanName: string | null
     englishName: string | null
     description: string | null
-    isNew: boolean | null
+    isNew: number | null
   }
 
   export type DrinksMaxAggregateOutputType = {
     id: number | null
-    categoriesId: number | null
+    categoryId: number | null
     koreanName: string | null
     englishName: string | null
     description: string | null
-    isNew: boolean | null
+    isNew: number | null
   }
 
   export type DrinksCountAggregateOutputType = {
     id: number
-    categoriesId: number
+    categoryId: number
     koreanName: number
     englishName: number
     description: number
@@ -4699,17 +4701,19 @@ export namespace Prisma {
 
   export type DrinksAvgAggregateInputType = {
     id?: true
-    categoriesId?: true
+    categoryId?: true
+    isNew?: true
   }
 
   export type DrinksSumAggregateInputType = {
     id?: true
-    categoriesId?: true
+    categoryId?: true
+    isNew?: true
   }
 
   export type DrinksMinAggregateInputType = {
     id?: true
-    categoriesId?: true
+    categoryId?: true
     koreanName?: true
     englishName?: true
     description?: true
@@ -4718,7 +4722,7 @@ export namespace Prisma {
 
   export type DrinksMaxAggregateInputType = {
     id?: true
-    categoriesId?: true
+    categoryId?: true
     koreanName?: true
     englishName?: true
     description?: true
@@ -4727,7 +4731,7 @@ export namespace Prisma {
 
   export type DrinksCountAggregateInputType = {
     id?: true
-    categoriesId?: true
+    categoryId?: true
     koreanName?: true
     englishName?: true
     description?: true
@@ -4829,11 +4833,11 @@ export namespace Prisma {
 
   export type DrinksGroupByOutputType = {
     id: number
-    categoriesId: number
+    categoryId: number
     koreanName: string
     englishName: string
     description: string
-    isNew: boolean
+    isNew: number
     _count: DrinksCountAggregateOutputType | null
     _avg: DrinksAvgAggregateOutputType | null
     _sum: DrinksSumAggregateOutputType | null
@@ -4858,7 +4862,7 @@ export namespace Prisma {
   export type DrinksSelect = {
     id?: boolean
     category?: boolean | CategoriesArgs
-    categoriesId?: boolean
+    categoryId?: boolean
     koreanName?: boolean
     englishName?: boolean
     description?: boolean
@@ -5603,60 +5607,60 @@ export namespace Prisma {
 
   export type ImagesAvgAggregateOutputType = {
     id: number | null
-    drinksId: number | null
+    drinkId: number | null
   }
 
   export type ImagesSumAggregateOutputType = {
     id: number | null
-    drinksId: number | null
+    drinkId: number | null
   }
 
   export type ImagesMinAggregateOutputType = {
     id: number | null
-    drinksId: number | null
-    imagesUrl: string | null
+    drinkId: number | null
+    imageUrl: string | null
   }
 
   export type ImagesMaxAggregateOutputType = {
     id: number | null
-    drinksId: number | null
-    imagesUrl: string | null
+    drinkId: number | null
+    imageUrl: string | null
   }
 
   export type ImagesCountAggregateOutputType = {
     id: number
-    drinksId: number
-    imagesUrl: number
+    drinkId: number
+    imageUrl: number
     _all: number
   }
 
 
   export type ImagesAvgAggregateInputType = {
     id?: true
-    drinksId?: true
+    drinkId?: true
   }
 
   export type ImagesSumAggregateInputType = {
     id?: true
-    drinksId?: true
+    drinkId?: true
   }
 
   export type ImagesMinAggregateInputType = {
     id?: true
-    drinksId?: true
-    imagesUrl?: true
+    drinkId?: true
+    imageUrl?: true
   }
 
   export type ImagesMaxAggregateInputType = {
     id?: true
-    drinksId?: true
-    imagesUrl?: true
+    drinkId?: true
+    imageUrl?: true
   }
 
   export type ImagesCountAggregateInputType = {
     id?: true
-    drinksId?: true
-    imagesUrl?: true
+    drinkId?: true
+    imageUrl?: true
     _all?: true
   }
 
@@ -5754,8 +5758,8 @@ export namespace Prisma {
 
   export type ImagesGroupByOutputType = {
     id: number
-    drinksId: number
-    imagesUrl: string
+    drinkId: number
+    imageUrl: string
     _count: ImagesCountAggregateOutputType | null
     _avg: ImagesAvgAggregateOutputType | null
     _sum: ImagesSumAggregateOutputType | null
@@ -5780,8 +5784,8 @@ export namespace Prisma {
   export type ImagesSelect = {
     id?: boolean
     drink?: boolean | DrinksArgs
-    drinksId?: boolean
-    imagesUrl?: boolean
+    drinkId?: boolean
+    imageUrl?: boolean
   }
 
   export type ImagesInclude = {
@@ -6477,31 +6481,31 @@ export namespace Prisma {
   export type LikesAvgAggregateOutputType = {
     id: number | null
     userId: number | null
-    drinksId: number | null
+    drinkId: number | null
   }
 
   export type LikesSumAggregateOutputType = {
     id: number | null
     userId: number | null
-    drinksId: number | null
+    drinkId: number | null
   }
 
   export type LikesMinAggregateOutputType = {
     id: number | null
     userId: number | null
-    drinksId: number | null
+    drinkId: number | null
   }
 
   export type LikesMaxAggregateOutputType = {
     id: number | null
     userId: number | null
-    drinksId: number | null
+    drinkId: number | null
   }
 
   export type LikesCountAggregateOutputType = {
     id: number
     userId: number
-    drinksId: number
+    drinkId: number
     _all: number
   }
 
@@ -6509,31 +6513,31 @@ export namespace Prisma {
   export type LikesAvgAggregateInputType = {
     id?: true
     userId?: true
-    drinksId?: true
+    drinkId?: true
   }
 
   export type LikesSumAggregateInputType = {
     id?: true
     userId?: true
-    drinksId?: true
+    drinkId?: true
   }
 
   export type LikesMinAggregateInputType = {
     id?: true
     userId?: true
-    drinksId?: true
+    drinkId?: true
   }
 
   export type LikesMaxAggregateInputType = {
     id?: true
     userId?: true
-    drinksId?: true
+    drinkId?: true
   }
 
   export type LikesCountAggregateInputType = {
     id?: true
     userId?: true
-    drinksId?: true
+    drinkId?: true
     _all?: true
   }
 
@@ -6632,7 +6636,7 @@ export namespace Prisma {
   export type LikesGroupByOutputType = {
     id: number
     userId: number
-    drinksId: number
+    drinkId: number
     _count: LikesCountAggregateOutputType | null
     _avg: LikesAvgAggregateOutputType | null
     _sum: LikesSumAggregateOutputType | null
@@ -6657,7 +6661,7 @@ export namespace Prisma {
   export type LikesSelect = {
     id?: boolean
     userId?: boolean
-    drinksId?: boolean
+    drinkId?: boolean
     user?: boolean | UsersArgs
     drink?: boolean | DrinksArgs
   }
@@ -7361,7 +7365,7 @@ export namespace Prisma {
 
   export type NutritionAvgAggregateOutputType = {
     id: number | null
-    drinksId: number | null
+    drinkId: number | null
     calorie: number | null
     natrium: number | null
     fat: number | null
@@ -7372,7 +7376,7 @@ export namespace Prisma {
 
   export type NutritionSumAggregateOutputType = {
     id: number | null
-    drinksId: number | null
+    drinkId: number | null
     calorie: number | null
     natrium: number | null
     fat: number | null
@@ -7383,7 +7387,7 @@ export namespace Prisma {
 
   export type NutritionMinAggregateOutputType = {
     id: number | null
-    drinksId: number | null
+    drinkId: number | null
     calorie: number | null
     natrium: number | null
     fat: number | null
@@ -7394,7 +7398,7 @@ export namespace Prisma {
 
   export type NutritionMaxAggregateOutputType = {
     id: number | null
-    drinksId: number | null
+    drinkId: number | null
     calorie: number | null
     natrium: number | null
     fat: number | null
@@ -7405,7 +7409,7 @@ export namespace Prisma {
 
   export type NutritionCountAggregateOutputType = {
     id: number
-    drinksId: number
+    drinkId: number
     calorie: number
     natrium: number
     fat: number
@@ -7418,7 +7422,7 @@ export namespace Prisma {
 
   export type NutritionAvgAggregateInputType = {
     id?: true
-    drinksId?: true
+    drinkId?: true
     calorie?: true
     natrium?: true
     fat?: true
@@ -7429,7 +7433,7 @@ export namespace Prisma {
 
   export type NutritionSumAggregateInputType = {
     id?: true
-    drinksId?: true
+    drinkId?: true
     calorie?: true
     natrium?: true
     fat?: true
@@ -7440,7 +7444,7 @@ export namespace Prisma {
 
   export type NutritionMinAggregateInputType = {
     id?: true
-    drinksId?: true
+    drinkId?: true
     calorie?: true
     natrium?: true
     fat?: true
@@ -7451,7 +7455,7 @@ export namespace Prisma {
 
   export type NutritionMaxAggregateInputType = {
     id?: true
-    drinksId?: true
+    drinkId?: true
     calorie?: true
     natrium?: true
     fat?: true
@@ -7462,7 +7466,7 @@ export namespace Prisma {
 
   export type NutritionCountAggregateInputType = {
     id?: true
-    drinksId?: true
+    drinkId?: true
     calorie?: true
     natrium?: true
     fat?: true
@@ -7566,7 +7570,7 @@ export namespace Prisma {
 
   export type NutritionGroupByOutputType = {
     id: number
-    drinksId: number
+    drinkId: number
     calorie: number
     natrium: number
     fat: number
@@ -7597,7 +7601,7 @@ export namespace Prisma {
   export type NutritionSelect = {
     id?: boolean
     drink?: boolean | DrinksArgs
-    drinksId?: boolean
+    drinkId?: boolean
     calorie?: boolean
     natrium?: boolean
     fat?: boolean
@@ -9231,8 +9235,8 @@ export namespace Prisma {
 
   export const Allergies_drinksScalarFieldEnum: {
     id: 'id',
-    allergiesId: 'allergiesId',
-    drinksId: 'drinksId'
+    allergieId: 'allergieId',
+    drinkId: 'drinkId'
   };
 
   export type Allergies_drinksScalarFieldEnum = (typeof Allergies_drinksScalarFieldEnum)[keyof typeof Allergies_drinksScalarFieldEnum]
@@ -9249,7 +9253,7 @@ export namespace Prisma {
   export const CommentsScalarFieldEnum: {
     id: 'id',
     userId: 'userId',
-    drinksId: 'drinksId',
+    drinkId: 'drinkId',
     content: 'content',
     created_at: 'created_at',
     updated_at: 'updated_at'
@@ -9260,7 +9264,7 @@ export namespace Prisma {
 
   export const DrinksScalarFieldEnum: {
     id: 'id',
-    categoriesId: 'categoriesId',
+    categoryId: 'categoryId',
     koreanName: 'koreanName',
     englishName: 'englishName',
     description: 'description',
@@ -9272,8 +9276,8 @@ export namespace Prisma {
 
   export const ImagesScalarFieldEnum: {
     id: 'id',
-    drinksId: 'drinksId',
-    imagesUrl: 'imagesUrl'
+    drinkId: 'drinkId',
+    imageUrl: 'imageUrl'
   };
 
   export type ImagesScalarFieldEnum = (typeof ImagesScalarFieldEnum)[keyof typeof ImagesScalarFieldEnum]
@@ -9282,7 +9286,7 @@ export namespace Prisma {
   export const LikesScalarFieldEnum: {
     id: 'id',
     userId: 'userId',
-    drinksId: 'drinksId'
+    drinkId: 'drinkId'
   };
 
   export type LikesScalarFieldEnum = (typeof LikesScalarFieldEnum)[keyof typeof LikesScalarFieldEnum]
@@ -9290,7 +9294,7 @@ export namespace Prisma {
 
   export const NutritionScalarFieldEnum: {
     id: 'id',
-    drinksId: 'drinksId',
+    drinkId: 'drinkId',
     calorie: 'calorie',
     natrium: 'natrium',
     fat: 'fat',
@@ -9373,17 +9377,17 @@ export namespace Prisma {
     NOT?: Enumerable<Allergies_drinksWhereInput>
     id?: IntFilter | number
     allergie?: XOR<AllergiesRelationFilter, AllergiesWhereInput>
-    allergiesId?: IntFilter | number
+    allergieId?: IntFilter | number
     drink?: XOR<DrinksRelationFilter, DrinksWhereInput>
-    drinksId?: IntFilter | number
+    drinkId?: IntFilter | number
   }
 
   export type Allergies_drinksOrderByWithRelationInput = {
     id?: SortOrder
     allergie?: AllergiesOrderByWithRelationInput
-    allergiesId?: SortOrder
+    allergieId?: SortOrder
     drink?: DrinksOrderByWithRelationInput
-    drinksId?: SortOrder
+    drinkId?: SortOrder
   }
 
   export type Allergies_drinksWhereUniqueInput = {
@@ -9392,8 +9396,8 @@ export namespace Prisma {
 
   export type Allergies_drinksOrderByWithAggregationInput = {
     id?: SortOrder
-    allergiesId?: SortOrder
-    drinksId?: SortOrder
+    allergieId?: SortOrder
+    drinkId?: SortOrder
     _count?: Allergies_drinksCountOrderByAggregateInput
     _avg?: Allergies_drinksAvgOrderByAggregateInput
     _max?: Allergies_drinksMaxOrderByAggregateInput
@@ -9406,8 +9410,8 @@ export namespace Prisma {
     OR?: Enumerable<Allergies_drinksScalarWhereWithAggregatesInput>
     NOT?: Enumerable<Allergies_drinksScalarWhereWithAggregatesInput>
     id?: IntWithAggregatesFilter | number
-    allergiesId?: IntWithAggregatesFilter | number
-    drinksId?: IntWithAggregatesFilter | number
+    allergieId?: IntWithAggregatesFilter | number
+    drinkId?: IntWithAggregatesFilter | number
   }
 
   export type CategoriesWhereInput = {
@@ -9455,7 +9459,7 @@ export namespace Prisma {
     user?: XOR<UsersRelationFilter, UsersWhereInput>
     userId?: IntFilter | number
     drink?: XOR<DrinksRelationFilter, DrinksWhereInput>
-    drinksId?: IntFilter | number
+    drinkId?: IntFilter | number
     content?: StringFilter | string
     created_at?: DateTimeNullableFilter | Date | string | null
     updated_at?: DateTimeNullableFilter | Date | string | null
@@ -9466,7 +9470,7 @@ export namespace Prisma {
     user?: UsersOrderByWithRelationInput
     userId?: SortOrder
     drink?: DrinksOrderByWithRelationInput
-    drinksId?: SortOrder
+    drinkId?: SortOrder
     content?: SortOrder
     created_at?: SortOrder
     updated_at?: SortOrder
@@ -9479,7 +9483,7 @@ export namespace Prisma {
   export type CommentsOrderByWithAggregationInput = {
     id?: SortOrder
     userId?: SortOrder
-    drinksId?: SortOrder
+    drinkId?: SortOrder
     content?: SortOrder
     created_at?: SortOrder
     updated_at?: SortOrder
@@ -9496,7 +9500,7 @@ export namespace Prisma {
     NOT?: Enumerable<CommentsScalarWhereWithAggregatesInput>
     id?: IntWithAggregatesFilter | number
     userId?: IntWithAggregatesFilter | number
-    drinksId?: IntWithAggregatesFilter | number
+    drinkId?: IntWithAggregatesFilter | number
     content?: StringWithAggregatesFilter | string
     created_at?: DateTimeNullableWithAggregatesFilter | Date | string | null
     updated_at?: DateTimeNullableWithAggregatesFilter | Date | string | null
@@ -9508,11 +9512,11 @@ export namespace Prisma {
     NOT?: Enumerable<DrinksWhereInput>
     id?: IntFilter | number
     category?: XOR<CategoriesRelationFilter, CategoriesWhereInput>
-    categoriesId?: IntFilter | number
+    categoryId?: IntFilter | number
     koreanName?: StringFilter | string
     englishName?: StringFilter | string
     description?: StringFilter | string
-    isNew?: BoolFilter | boolean
+    isNew?: IntFilter | number
     Allergies_drinks?: Allergies_drinksListRelationFilter
     Comments?: CommentsListRelationFilter
     Images?: ImagesListRelationFilter
@@ -9523,7 +9527,7 @@ export namespace Prisma {
   export type DrinksOrderByWithRelationInput = {
     id?: SortOrder
     category?: CategoriesOrderByWithRelationInput
-    categoriesId?: SortOrder
+    categoryId?: SortOrder
     koreanName?: SortOrder
     englishName?: SortOrder
     description?: SortOrder
@@ -9541,7 +9545,7 @@ export namespace Prisma {
 
   export type DrinksOrderByWithAggregationInput = {
     id?: SortOrder
-    categoriesId?: SortOrder
+    categoryId?: SortOrder
     koreanName?: SortOrder
     englishName?: SortOrder
     description?: SortOrder
@@ -9558,11 +9562,11 @@ export namespace Prisma {
     OR?: Enumerable<DrinksScalarWhereWithAggregatesInput>
     NOT?: Enumerable<DrinksScalarWhereWithAggregatesInput>
     id?: IntWithAggregatesFilter | number
-    categoriesId?: IntWithAggregatesFilter | number
+    categoryId?: IntWithAggregatesFilter | number
     koreanName?: StringWithAggregatesFilter | string
     englishName?: StringWithAggregatesFilter | string
     description?: StringWithAggregatesFilter | string
-    isNew?: BoolWithAggregatesFilter | boolean
+    isNew?: IntWithAggregatesFilter | number
   }
 
   export type ImagesWhereInput = {
@@ -9571,15 +9575,15 @@ export namespace Prisma {
     NOT?: Enumerable<ImagesWhereInput>
     id?: IntFilter | number
     drink?: XOR<DrinksRelationFilter, DrinksWhereInput>
-    drinksId?: IntFilter | number
-    imagesUrl?: StringFilter | string
+    drinkId?: IntFilter | number
+    imageUrl?: StringFilter | string
   }
 
   export type ImagesOrderByWithRelationInput = {
     id?: SortOrder
     drink?: DrinksOrderByWithRelationInput
-    drinksId?: SortOrder
-    imagesUrl?: SortOrder
+    drinkId?: SortOrder
+    imageUrl?: SortOrder
   }
 
   export type ImagesWhereUniqueInput = {
@@ -9588,8 +9592,8 @@ export namespace Prisma {
 
   export type ImagesOrderByWithAggregationInput = {
     id?: SortOrder
-    drinksId?: SortOrder
-    imagesUrl?: SortOrder
+    drinkId?: SortOrder
+    imageUrl?: SortOrder
     _count?: ImagesCountOrderByAggregateInput
     _avg?: ImagesAvgOrderByAggregateInput
     _max?: ImagesMaxOrderByAggregateInput
@@ -9602,8 +9606,8 @@ export namespace Prisma {
     OR?: Enumerable<ImagesScalarWhereWithAggregatesInput>
     NOT?: Enumerable<ImagesScalarWhereWithAggregatesInput>
     id?: IntWithAggregatesFilter | number
-    drinksId?: IntWithAggregatesFilter | number
-    imagesUrl?: StringWithAggregatesFilter | string
+    drinkId?: IntWithAggregatesFilter | number
+    imageUrl?: StringWithAggregatesFilter | string
   }
 
   export type LikesWhereInput = {
@@ -9612,7 +9616,7 @@ export namespace Prisma {
     NOT?: Enumerable<LikesWhereInput>
     id?: IntFilter | number
     userId?: IntFilter | number
-    drinksId?: IntFilter | number
+    drinkId?: IntFilter | number
     user?: XOR<UsersRelationFilter, UsersWhereInput>
     drink?: XOR<DrinksRelationFilter, DrinksWhereInput>
   }
@@ -9620,7 +9624,7 @@ export namespace Prisma {
   export type LikesOrderByWithRelationInput = {
     id?: SortOrder
     userId?: SortOrder
-    drinksId?: SortOrder
+    drinkId?: SortOrder
     user?: UsersOrderByWithRelationInput
     drink?: DrinksOrderByWithRelationInput
   }
@@ -9632,7 +9636,7 @@ export namespace Prisma {
   export type LikesOrderByWithAggregationInput = {
     id?: SortOrder
     userId?: SortOrder
-    drinksId?: SortOrder
+    drinkId?: SortOrder
     _count?: LikesCountOrderByAggregateInput
     _avg?: LikesAvgOrderByAggregateInput
     _max?: LikesMaxOrderByAggregateInput
@@ -9646,7 +9650,7 @@ export namespace Prisma {
     NOT?: Enumerable<LikesScalarWhereWithAggregatesInput>
     id?: IntWithAggregatesFilter | number
     userId?: IntWithAggregatesFilter | number
-    drinksId?: IntWithAggregatesFilter | number
+    drinkId?: IntWithAggregatesFilter | number
   }
 
   export type NutritionWhereInput = {
@@ -9655,7 +9659,7 @@ export namespace Prisma {
     NOT?: Enumerable<NutritionWhereInput>
     id?: IntFilter | number
     drink?: XOR<DrinksRelationFilter, DrinksWhereInput>
-    drinksId?: IntFilter | number
+    drinkId?: IntFilter | number
     calorie?: FloatFilter | number
     natrium?: FloatFilter | number
     fat?: FloatFilter | number
@@ -9667,7 +9671,7 @@ export namespace Prisma {
   export type NutritionOrderByWithRelationInput = {
     id?: SortOrder
     drink?: DrinksOrderByWithRelationInput
-    drinksId?: SortOrder
+    drinkId?: SortOrder
     calorie?: SortOrder
     natrium?: SortOrder
     fat?: SortOrder
@@ -9682,7 +9686,7 @@ export namespace Prisma {
 
   export type NutritionOrderByWithAggregationInput = {
     id?: SortOrder
-    drinksId?: SortOrder
+    drinkId?: SortOrder
     calorie?: SortOrder
     natrium?: SortOrder
     fat?: SortOrder
@@ -9701,7 +9705,7 @@ export namespace Prisma {
     OR?: Enumerable<NutritionScalarWhereWithAggregatesInput>
     NOT?: Enumerable<NutritionScalarWhereWithAggregatesInput>
     id?: IntWithAggregatesFilter | number
-    drinksId?: IntWithAggregatesFilter | number
+    drinkId?: IntWithAggregatesFilter | number
     calorie?: FloatWithAggregatesFilter | number
     natrium?: FloatWithAggregatesFilter | number
     fat?: FloatWithAggregatesFilter | number
@@ -9821,8 +9825,8 @@ export namespace Prisma {
 
   export type Allergies_drinksUncheckedCreateInput = {
     id?: number
-    allergiesId: number
-    drinksId: number
+    allergieId: number
+    drinkId: number
   }
 
   export type Allergies_drinksUpdateInput = {
@@ -9832,14 +9836,14 @@ export namespace Prisma {
 
   export type Allergies_drinksUncheckedUpdateInput = {
     id?: IntFieldUpdateOperationsInput | number
-    allergiesId?: IntFieldUpdateOperationsInput | number
-    drinksId?: IntFieldUpdateOperationsInput | number
+    allergieId?: IntFieldUpdateOperationsInput | number
+    drinkId?: IntFieldUpdateOperationsInput | number
   }
 
   export type Allergies_drinksCreateManyInput = {
     id?: number
-    allergiesId: number
-    drinksId: number
+    allergieId: number
+    drinkId: number
   }
 
   export type Allergies_drinksUpdateManyMutationInput = {
@@ -9848,8 +9852,8 @@ export namespace Prisma {
 
   export type Allergies_drinksUncheckedUpdateManyInput = {
     id?: IntFieldUpdateOperationsInput | number
-    allergiesId?: IntFieldUpdateOperationsInput | number
-    drinksId?: IntFieldUpdateOperationsInput | number
+    allergieId?: IntFieldUpdateOperationsInput | number
+    drinkId?: IntFieldUpdateOperationsInput | number
   }
 
   export type CategoriesCreateInput = {
@@ -9899,7 +9903,7 @@ export namespace Prisma {
   export type CommentsUncheckedCreateInput = {
     id?: number
     userId: number
-    drinksId: number
+    drinkId: number
     content: string
     created_at?: Date | string | null
     updated_at?: Date | string | null
@@ -9916,7 +9920,7 @@ export namespace Prisma {
   export type CommentsUncheckedUpdateInput = {
     id?: IntFieldUpdateOperationsInput | number
     userId?: IntFieldUpdateOperationsInput | number
-    drinksId?: IntFieldUpdateOperationsInput | number
+    drinkId?: IntFieldUpdateOperationsInput | number
     content?: StringFieldUpdateOperationsInput | string
     created_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     updated_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -9925,7 +9929,7 @@ export namespace Prisma {
   export type CommentsCreateManyInput = {
     id?: number
     userId: number
-    drinksId: number
+    drinkId: number
     content: string
     created_at?: Date | string | null
     updated_at?: Date | string | null
@@ -9940,7 +9944,7 @@ export namespace Prisma {
   export type CommentsUncheckedUpdateManyInput = {
     id?: IntFieldUpdateOperationsInput | number
     userId?: IntFieldUpdateOperationsInput | number
-    drinksId?: IntFieldUpdateOperationsInput | number
+    drinkId?: IntFieldUpdateOperationsInput | number
     content?: StringFieldUpdateOperationsInput | string
     created_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     updated_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -9950,7 +9954,7 @@ export namespace Prisma {
     koreanName: string
     englishName: string
     description: string
-    isNew: boolean
+    isNew: number
     category: CategoriesCreateNestedOneWithoutDrinksInput
     Allergies_drinks?: Allergies_drinksCreateNestedManyWithoutDrinkInput
     Comments?: CommentsCreateNestedManyWithoutDrinkInput
@@ -9961,11 +9965,11 @@ export namespace Prisma {
 
   export type DrinksUncheckedCreateInput = {
     id?: number
-    categoriesId: number
+    categoryId: number
     koreanName: string
     englishName: string
     description: string
-    isNew: boolean
+    isNew: number
     Allergies_drinks?: Allergies_drinksUncheckedCreateNestedManyWithoutDrinkInput
     Comments?: CommentsUncheckedCreateNestedManyWithoutDrinkInput
     Images?: ImagesUncheckedCreateNestedManyWithoutDrinkInput
@@ -9977,7 +9981,7 @@ export namespace Prisma {
     koreanName?: StringFieldUpdateOperationsInput | string
     englishName?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
-    isNew?: BoolFieldUpdateOperationsInput | boolean
+    isNew?: IntFieldUpdateOperationsInput | number
     category?: CategoriesUpdateOneRequiredWithoutDrinksInput
     Allergies_drinks?: Allergies_drinksUpdateManyWithoutDrinkInput
     Comments?: CommentsUpdateManyWithoutDrinkInput
@@ -9988,11 +9992,11 @@ export namespace Prisma {
 
   export type DrinksUncheckedUpdateInput = {
     id?: IntFieldUpdateOperationsInput | number
-    categoriesId?: IntFieldUpdateOperationsInput | number
+    categoryId?: IntFieldUpdateOperationsInput | number
     koreanName?: StringFieldUpdateOperationsInput | string
     englishName?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
-    isNew?: BoolFieldUpdateOperationsInput | boolean
+    isNew?: IntFieldUpdateOperationsInput | number
     Allergies_drinks?: Allergies_drinksUncheckedUpdateManyWithoutDrinkInput
     Comments?: CommentsUncheckedUpdateManyWithoutDrinkInput
     Images?: ImagesUncheckedUpdateManyWithoutDrinkInput
@@ -10002,65 +10006,65 @@ export namespace Prisma {
 
   export type DrinksCreateManyInput = {
     id?: number
-    categoriesId: number
+    categoryId: number
     koreanName: string
     englishName: string
     description: string
-    isNew: boolean
+    isNew: number
   }
 
   export type DrinksUpdateManyMutationInput = {
     koreanName?: StringFieldUpdateOperationsInput | string
     englishName?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
-    isNew?: BoolFieldUpdateOperationsInput | boolean
+    isNew?: IntFieldUpdateOperationsInput | number
   }
 
   export type DrinksUncheckedUpdateManyInput = {
     id?: IntFieldUpdateOperationsInput | number
-    categoriesId?: IntFieldUpdateOperationsInput | number
+    categoryId?: IntFieldUpdateOperationsInput | number
     koreanName?: StringFieldUpdateOperationsInput | string
     englishName?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
-    isNew?: BoolFieldUpdateOperationsInput | boolean
+    isNew?: IntFieldUpdateOperationsInput | number
   }
 
   export type ImagesCreateInput = {
-    imagesUrl: string
+    imageUrl: string
     drink: DrinksCreateNestedOneWithoutImagesInput
   }
 
   export type ImagesUncheckedCreateInput = {
     id?: number
-    drinksId: number
-    imagesUrl: string
+    drinkId: number
+    imageUrl: string
   }
 
   export type ImagesUpdateInput = {
-    imagesUrl?: StringFieldUpdateOperationsInput | string
+    imageUrl?: StringFieldUpdateOperationsInput | string
     drink?: DrinksUpdateOneRequiredWithoutImagesInput
   }
 
   export type ImagesUncheckedUpdateInput = {
     id?: IntFieldUpdateOperationsInput | number
-    drinksId?: IntFieldUpdateOperationsInput | number
-    imagesUrl?: StringFieldUpdateOperationsInput | string
+    drinkId?: IntFieldUpdateOperationsInput | number
+    imageUrl?: StringFieldUpdateOperationsInput | string
   }
 
   export type ImagesCreateManyInput = {
     id?: number
-    drinksId: number
-    imagesUrl: string
+    drinkId: number
+    imageUrl: string
   }
 
   export type ImagesUpdateManyMutationInput = {
-    imagesUrl?: StringFieldUpdateOperationsInput | string
+    imageUrl?: StringFieldUpdateOperationsInput | string
   }
 
   export type ImagesUncheckedUpdateManyInput = {
     id?: IntFieldUpdateOperationsInput | number
-    drinksId?: IntFieldUpdateOperationsInput | number
-    imagesUrl?: StringFieldUpdateOperationsInput | string
+    drinkId?: IntFieldUpdateOperationsInput | number
+    imageUrl?: StringFieldUpdateOperationsInput | string
   }
 
   export type LikesCreateInput = {
@@ -10071,7 +10075,7 @@ export namespace Prisma {
   export type LikesUncheckedCreateInput = {
     id?: number
     userId: number
-    drinksId: number
+    drinkId: number
   }
 
   export type LikesUpdateInput = {
@@ -10082,13 +10086,13 @@ export namespace Prisma {
   export type LikesUncheckedUpdateInput = {
     id?: IntFieldUpdateOperationsInput | number
     userId?: IntFieldUpdateOperationsInput | number
-    drinksId?: IntFieldUpdateOperationsInput | number
+    drinkId?: IntFieldUpdateOperationsInput | number
   }
 
   export type LikesCreateManyInput = {
     id?: number
     userId: number
-    drinksId: number
+    drinkId: number
   }
 
   export type LikesUpdateManyMutationInput = {
@@ -10098,7 +10102,7 @@ export namespace Prisma {
   export type LikesUncheckedUpdateManyInput = {
     id?: IntFieldUpdateOperationsInput | number
     userId?: IntFieldUpdateOperationsInput | number
-    drinksId?: IntFieldUpdateOperationsInput | number
+    drinkId?: IntFieldUpdateOperationsInput | number
   }
 
   export type NutritionCreateInput = {
@@ -10113,7 +10117,7 @@ export namespace Prisma {
 
   export type NutritionUncheckedCreateInput = {
     id?: number
-    drinksId: number
+    drinkId: number
     calorie: number
     natrium: number
     fat: number
@@ -10134,7 +10138,7 @@ export namespace Prisma {
 
   export type NutritionUncheckedUpdateInput = {
     id?: IntFieldUpdateOperationsInput | number
-    drinksId?: IntFieldUpdateOperationsInput | number
+    drinkId?: IntFieldUpdateOperationsInput | number
     calorie?: FloatFieldUpdateOperationsInput | number
     natrium?: FloatFieldUpdateOperationsInput | number
     fat?: FloatFieldUpdateOperationsInput | number
@@ -10145,7 +10149,7 @@ export namespace Prisma {
 
   export type NutritionCreateManyInput = {
     id?: number
-    drinksId: number
+    drinkId: number
     calorie: number
     natrium: number
     fat: number
@@ -10165,7 +10169,7 @@ export namespace Prisma {
 
   export type NutritionUncheckedUpdateManyInput = {
     id?: IntFieldUpdateOperationsInput | number
-    drinksId?: IntFieldUpdateOperationsInput | number
+    drinkId?: IntFieldUpdateOperationsInput | number
     calorie?: FloatFieldUpdateOperationsInput | number
     natrium?: FloatFieldUpdateOperationsInput | number
     fat?: FloatFieldUpdateOperationsInput | number
@@ -10366,32 +10370,32 @@ export namespace Prisma {
 
   export type Allergies_drinksCountOrderByAggregateInput = {
     id?: SortOrder
-    allergiesId?: SortOrder
-    drinksId?: SortOrder
+    allergieId?: SortOrder
+    drinkId?: SortOrder
   }
 
   export type Allergies_drinksAvgOrderByAggregateInput = {
     id?: SortOrder
-    allergiesId?: SortOrder
-    drinksId?: SortOrder
+    allergieId?: SortOrder
+    drinkId?: SortOrder
   }
 
   export type Allergies_drinksMaxOrderByAggregateInput = {
     id?: SortOrder
-    allergiesId?: SortOrder
-    drinksId?: SortOrder
+    allergieId?: SortOrder
+    drinkId?: SortOrder
   }
 
   export type Allergies_drinksMinOrderByAggregateInput = {
     id?: SortOrder
-    allergiesId?: SortOrder
-    drinksId?: SortOrder
+    allergieId?: SortOrder
+    drinkId?: SortOrder
   }
 
   export type Allergies_drinksSumOrderByAggregateInput = {
     id?: SortOrder
-    allergiesId?: SortOrder
-    drinksId?: SortOrder
+    allergieId?: SortOrder
+    drinkId?: SortOrder
   }
 
   export type DrinksListRelationFilter = {
@@ -10446,7 +10450,7 @@ export namespace Prisma {
   export type CommentsCountOrderByAggregateInput = {
     id?: SortOrder
     userId?: SortOrder
-    drinksId?: SortOrder
+    drinkId?: SortOrder
     content?: SortOrder
     created_at?: SortOrder
     updated_at?: SortOrder
@@ -10455,13 +10459,13 @@ export namespace Prisma {
   export type CommentsAvgOrderByAggregateInput = {
     id?: SortOrder
     userId?: SortOrder
-    drinksId?: SortOrder
+    drinkId?: SortOrder
   }
 
   export type CommentsMaxOrderByAggregateInput = {
     id?: SortOrder
     userId?: SortOrder
-    drinksId?: SortOrder
+    drinkId?: SortOrder
     content?: SortOrder
     created_at?: SortOrder
     updated_at?: SortOrder
@@ -10470,7 +10474,7 @@ export namespace Prisma {
   export type CommentsMinOrderByAggregateInput = {
     id?: SortOrder
     userId?: SortOrder
-    drinksId?: SortOrder
+    drinkId?: SortOrder
     content?: SortOrder
     created_at?: SortOrder
     updated_at?: SortOrder
@@ -10479,7 +10483,7 @@ export namespace Prisma {
   export type CommentsSumOrderByAggregateInput = {
     id?: SortOrder
     userId?: SortOrder
-    drinksId?: SortOrder
+    drinkId?: SortOrder
   }
 
   export type DateTimeNullableWithAggregatesFilter = {
@@ -10499,11 +10503,6 @@ export namespace Prisma {
   export type CategoriesRelationFilter = {
     is?: CategoriesWhereInput
     isNot?: CategoriesWhereInput
-  }
-
-  export type BoolFilter = {
-    equals?: boolean
-    not?: NestedBoolFilter | boolean
   }
 
   export type CommentsListRelationFilter = {
@@ -10548,7 +10547,7 @@ export namespace Prisma {
 
   export type DrinksCountOrderByAggregateInput = {
     id?: SortOrder
-    categoriesId?: SortOrder
+    categoryId?: SortOrder
     koreanName?: SortOrder
     englishName?: SortOrder
     description?: SortOrder
@@ -10557,12 +10556,13 @@ export namespace Prisma {
 
   export type DrinksAvgOrderByAggregateInput = {
     id?: SortOrder
-    categoriesId?: SortOrder
+    categoryId?: SortOrder
+    isNew?: SortOrder
   }
 
   export type DrinksMaxOrderByAggregateInput = {
     id?: SortOrder
-    categoriesId?: SortOrder
+    categoryId?: SortOrder
     koreanName?: SortOrder
     englishName?: SortOrder
     description?: SortOrder
@@ -10571,7 +10571,7 @@ export namespace Prisma {
 
   export type DrinksMinOrderByAggregateInput = {
     id?: SortOrder
-    categoriesId?: SortOrder
+    categoryId?: SortOrder
     koreanName?: SortOrder
     englishName?: SortOrder
     description?: SortOrder
@@ -10580,73 +10580,66 @@ export namespace Prisma {
 
   export type DrinksSumOrderByAggregateInput = {
     id?: SortOrder
-    categoriesId?: SortOrder
-  }
-
-  export type BoolWithAggregatesFilter = {
-    equals?: boolean
-    not?: NestedBoolWithAggregatesFilter | boolean
-    _count?: NestedIntFilter
-    _min?: NestedBoolFilter
-    _max?: NestedBoolFilter
+    categoryId?: SortOrder
+    isNew?: SortOrder
   }
 
   export type ImagesCountOrderByAggregateInput = {
     id?: SortOrder
-    drinksId?: SortOrder
-    imagesUrl?: SortOrder
+    drinkId?: SortOrder
+    imageUrl?: SortOrder
   }
 
   export type ImagesAvgOrderByAggregateInput = {
     id?: SortOrder
-    drinksId?: SortOrder
+    drinkId?: SortOrder
   }
 
   export type ImagesMaxOrderByAggregateInput = {
     id?: SortOrder
-    drinksId?: SortOrder
-    imagesUrl?: SortOrder
+    drinkId?: SortOrder
+    imageUrl?: SortOrder
   }
 
   export type ImagesMinOrderByAggregateInput = {
     id?: SortOrder
-    drinksId?: SortOrder
-    imagesUrl?: SortOrder
+    drinkId?: SortOrder
+    imageUrl?: SortOrder
   }
 
   export type ImagesSumOrderByAggregateInput = {
     id?: SortOrder
-    drinksId?: SortOrder
+    drinkId?: SortOrder
   }
 
   export type LikesCountOrderByAggregateInput = {
     id?: SortOrder
     userId?: SortOrder
-    drinksId?: SortOrder
+    drinkId?: SortOrder
   }
 
   export type LikesAvgOrderByAggregateInput = {
     id?: SortOrder
     userId?: SortOrder
-    drinksId?: SortOrder
+    drinkId?: SortOrder
   }
 
   export type LikesMaxOrderByAggregateInput = {
     id?: SortOrder
     userId?: SortOrder
-    drinksId?: SortOrder
+    drinkId?: SortOrder
   }
 
   export type LikesMinOrderByAggregateInput = {
     id?: SortOrder
     userId?: SortOrder
-    drinksId?: SortOrder
+    drinkId?: SortOrder
   }
 
   export type LikesSumOrderByAggregateInput = {
     id?: SortOrder
     userId?: SortOrder
-    drinksId?: SortOrder
+    drinkId?: SortOrder
   }
 
   export type FloatFilter = {
@@ -10662,7 +10655,7 @@ export namespace Prisma {
 
   export type NutritionCountOrderByAggregateInput = {
     id?: SortOrder
-    drinksId?: SortOrder
+    drinkId?: SortOrder
     calorie?: SortOrder
     natrium?: SortOrder
     fat?: SortOrder
@@ -10673,7 +10666,7 @@ export namespace Prisma {
 
   export type NutritionAvgOrderByAggregateInput = {
     id?: SortOrder
-    drinksId?: SortOrder
+    drinkId?: SortOrder
     calorie?: SortOrder
     natrium?: SortOrder
     fat?: SortOrder
@@ -10684,7 +10677,7 @@ export namespace Prisma {
 
   export type NutritionMaxOrderByAggregateInput = {
     id?: SortOrder
-    drinksId?: SortOrder
+    drinkId?: SortOrder
     calorie?: SortOrder
     natrium?: SortOrder
     fat?: SortOrder
@@ -10695,7 +10688,7 @@ export namespace Prisma {
 
   export type NutritionMinOrderByAggregateInput = {
     id?: SortOrder
-    drinksId?: SortOrder
+    drinkId?: SortOrder
     calorie?: SortOrder
     natrium?: SortOrder
     fat?: SortOrder
@@ -10706,7 +10699,7 @@ export namespace Prisma {
 
   export type NutritionSumOrderByAggregateInput = {
     id?: SortOrder
-    drinksId?: SortOrder
+    drinkId?: SortOrder
     calorie?: SortOrder
     natrium?: SortOrder
     fat?: SortOrder
@@ -10743,6 +10736,11 @@ export namespace Prisma {
     startsWith?: string
     endsWith?: string
     not?: NestedStringNullableFilter | string | null
+  }
+
+  export type BoolFilter = {
+    equals?: boolean
+    not?: NestedBoolFilter | boolean
   }
 
   export type UsersCountOrderByAggregateInput = {
@@ -10804,6 +10802,14 @@ export namespace Prisma {
     _count?: NestedIntNullableFilter
     _min?: NestedStringNullableFilter
     _max?: NestedStringNullableFilter
+  }
+
+  export type BoolWithAggregatesFilter = {
+    equals?: boolean
+    not?: NestedBoolWithAggregatesFilter | boolean
+    _count?: NestedIntFilter
+    _min?: NestedBoolFilter
+    _max?: NestedBoolFilter
   }
 
   export type Allergies_drinksCreateNestedManyWithoutAllergieInput = {
@@ -11036,10 +11042,6 @@ export namespace Prisma {
     connectOrCreate?: Enumerable<NutritionCreateOrConnectWithoutDrinkInput>
     createMany?: NutritionCreateManyDrinkInputEnvelope
     connect?: Enumerable<NutritionWhereUniqueInput>
-  }
-
-  export type BoolFieldUpdateOperationsInput = {
-    set?: boolean
   }
 
   export type CategoriesUpdateOneRequiredWithoutDrinksInput = {
@@ -11286,6 +11288,10 @@ export namespace Prisma {
     set?: string | null
   }
 
+  export type BoolFieldUpdateOperationsInput = {
+    set?: boolean
+  }
+
   export type CommentsUpdateManyWithoutUserInput = {
     create?: XOR<Enumerable<CommentsCreateWithoutUserInput>, Enumerable<CommentsUncheckedCreateWithoutUserInput>>
     connectOrCreate?: Enumerable<CommentsCreateOrConnectWithoutUserInput>
@@ -11447,19 +11453,6 @@ export namespace Prisma {
     not?: NestedIntNullableFilter | number | null
   }
 
-  export type NestedBoolFilter = {
-    equals?: boolean
-    not?: NestedBoolFilter | boolean
-  }
-
-  export type NestedBoolWithAggregatesFilter = {
-    equals?: boolean
-    not?: NestedBoolWithAggregatesFilter | boolean
-    _count?: NestedIntFilter
-    _min?: NestedBoolFilter
-    _max?: NestedBoolFilter
-  }
-
   export type NestedFloatWithAggregatesFilter = {
     equals?: number
     in?: Enumerable<number>
@@ -11490,6 +11483,11 @@ export namespace Prisma {
     not?: NestedStringNullableFilter | string | null
   }
 
+  export type NestedBoolFilter = {
+    equals?: boolean
+    not?: NestedBoolFilter | boolean
+  }
+
   export type NestedStringNullableWithAggregatesFilter = {
     equals?: string | null
     in?: Enumerable<string> | null
@@ -11507,13 +11505,21 @@ export namespace Prisma {
     _max?: NestedStringNullableFilter
   }
 
+  export type NestedBoolWithAggregatesFilter = {
+    equals?: boolean
+    not?: NestedBoolWithAggregatesFilter | boolean
+    _count?: NestedIntFilter
+    _min?: NestedBoolFilter
+    _max?: NestedBoolFilter
+  }
+
   export type Allergies_drinksCreateWithoutAllergieInput = {
     drink: DrinksCreateNestedOneWithoutAllergies_drinksInput
   }
 
   export type Allergies_drinksUncheckedCreateWithoutAllergieInput = {
     id?: number
-    drinksId: number
+    drinkId: number
   }
 
   export type Allergies_drinksCreateOrConnectWithoutAllergieInput = {
@@ -11547,8 +11553,8 @@ export namespace Prisma {
     OR?: Enumerable<Allergies_drinksScalarWhereInput>
     NOT?: Enumerable<Allergies_drinksScalarWhereInput>
     id?: IntFilter | number
-    allergiesId?: IntFilter | number
-    drinksId?: IntFilter | number
+    allergieId?: IntFilter | number
+    drinkId?: IntFilter | number
   }
 
   export type AllergiesCreateWithoutAllergies_drinkInput = {
@@ -11569,7 +11575,7 @@ export namespace Prisma {
     koreanName: string
     englishName: string
     description: string
-    isNew: boolean
+    isNew: number
     category: CategoriesCreateNestedOneWithoutDrinksInput
     Comments?: CommentsCreateNestedManyWithoutDrinkInput
     Images?: ImagesCreateNestedManyWithoutDrinkInput
@@ -11579,11 +11585,11 @@ export namespace Prisma {
 
   export type DrinksUncheckedCreateWithoutAllergies_drinksInput = {
     id?: number
-    categoriesId: number
+    categoryId: number
     koreanName: string
     englishName: string
     description: string
-    isNew: boolean
+    isNew: number
     Comments?: CommentsUncheckedCreateNestedManyWithoutDrinkInput
     Images?: ImagesUncheckedCreateNestedManyWithoutDrinkInput
     Likes?: LikesUncheckedCreateNestedManyWithoutDrinkInput
@@ -11618,7 +11624,7 @@ export namespace Prisma {
     koreanName?: StringFieldUpdateOperationsInput | string
     englishName?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
-    isNew?: BoolFieldUpdateOperationsInput | boolean
+    isNew?: IntFieldUpdateOperationsInput | number
     category?: CategoriesUpdateOneRequiredWithoutDrinksInput
     Comments?: CommentsUpdateManyWithoutDrinkInput
     Images?: ImagesUpdateManyWithoutDrinkInput
@@ -11628,11 +11634,11 @@ export namespace Prisma {
 
   export type DrinksUncheckedUpdateWithoutAllergies_drinksInput = {
     id?: IntFieldUpdateOperationsInput | number
-    categoriesId?: IntFieldUpdateOperationsInput | number
+    categoryId?: IntFieldUpdateOperationsInput | number
     koreanName?: StringFieldUpdateOperationsInput | string
     englishName?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
-    isNew?: BoolFieldUpdateOperationsInput | boolean
+    isNew?: IntFieldUpdateOperationsInput | number
     Comments?: CommentsUncheckedUpdateManyWithoutDrinkInput
     Images?: ImagesUncheckedUpdateManyWithoutDrinkInput
     Likes?: LikesUncheckedUpdateManyWithoutDrinkInput
@@ -11643,7 +11649,7 @@ export namespace Prisma {
     koreanName: string
     englishName: string
     description: string
-    isNew: boolean
+    isNew: number
     Allergies_drinks?: Allergies_drinksCreateNestedManyWithoutDrinkInput
     Comments?: CommentsCreateNestedManyWithoutDrinkInput
     Images?: ImagesCreateNestedManyWithoutDrinkInput
@@ -11656,7 +11662,7 @@ export namespace Prisma {
     koreanName: string
     englishName: string
     description: string
-    isNew: boolean
+    isNew: number
     Allergies_drinks?: Allergies_drinksUncheckedCreateNestedManyWithoutDrinkInput
     Comments?: CommentsUncheckedCreateNestedManyWithoutDrinkInput
     Images?: ImagesUncheckedCreateNestedManyWithoutDrinkInput
@@ -11695,11 +11701,11 @@ export namespace Prisma {
     OR?: Enumerable<DrinksScalarWhereInput>
     NOT?: Enumerable<DrinksScalarWhereInput>
     id?: IntFilter | number
-    categoriesId?: IntFilter | number
+    categoryId?: IntFilter | number
     koreanName?: StringFilter | string
     englishName?: StringFilter | string
     description?: StringFilter | string
-    isNew?: BoolFilter | boolean
+    isNew?: IntFilter | number
   }
 
   export type UsersCreateWithoutCommentsInput = {
@@ -11736,7 +11742,7 @@ export namespace Prisma {
     koreanName: string
     englishName: string
     description: string
-    isNew: boolean
+    isNew: number
     category: CategoriesCreateNestedOneWithoutDrinksInput
     Allergies_drinks?: Allergies_drinksCreateNestedManyWithoutDrinkInput
     Images?: ImagesCreateNestedManyWithoutDrinkInput
@@ -11746,11 +11752,11 @@ export namespace Prisma {
 
   export type DrinksUncheckedCreateWithoutCommentsInput = {
     id?: number
-    categoriesId: number
+    categoryId: number
     koreanName: string
     englishName: string
     description: string
-    isNew: boolean
+    isNew: number
     Allergies_drinks?: Allergies_drinksUncheckedCreateNestedManyWithoutDrinkInput
     Images?: ImagesUncheckedCreateNestedManyWithoutDrinkInput
     Likes?: LikesUncheckedCreateNestedManyWithoutDrinkInput
@@ -11801,7 +11807,7 @@ export namespace Prisma {
     koreanName?: StringFieldUpdateOperationsInput | string
     englishName?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
-    isNew?: BoolFieldUpdateOperationsInput | boolean
+    isNew?: IntFieldUpdateOperationsInput | number
     category?: CategoriesUpdateOneRequiredWithoutDrinksInput
     Allergies_drinks?: Allergies_drinksUpdateManyWithoutDrinkInput
     Images?: ImagesUpdateManyWithoutDrinkInput
@@ -11811,11 +11817,11 @@ export namespace Prisma {
 
   export type DrinksUncheckedUpdateWithoutCommentsInput = {
     id?: IntFieldUpdateOperationsInput | number
-    categoriesId?: IntFieldUpdateOperationsInput | number
+    categoryId?: IntFieldUpdateOperationsInput | number
     koreanName?: StringFieldUpdateOperationsInput | string
     englishName?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
-    isNew?: BoolFieldUpdateOperationsInput | boolean
+    isNew?: IntFieldUpdateOperationsInput | number
     Allergies_drinks?: Allergies_drinksUncheckedUpdateManyWithoutDrinkInput
     Images?: ImagesUncheckedUpdateManyWithoutDrinkInput
     Likes?: LikesUncheckedUpdateManyWithoutDrinkInput
@@ -11842,7 +11848,7 @@ export namespace Prisma {
 
   export type Allergies_drinksUncheckedCreateWithoutDrinkInput = {
     id?: number
-    allergiesId: number
+    allergieId: number
   }
 
   export type Allergies_drinksCreateOrConnectWithoutDrinkInput = {
@@ -11881,12 +11887,12 @@ export namespace Prisma {
   }
 
   export type ImagesCreateWithoutDrinkInput = {
-    imagesUrl: string
+    imageUrl: string
   }
 
   export type ImagesUncheckedCreateWithoutDrinkInput = {
     id?: number
-    imagesUrl: string
+    imageUrl: string
   }
 
   export type ImagesCreateOrConnectWithoutDrinkInput = {
@@ -11999,7 +12005,7 @@ export namespace Prisma {
     NOT?: Enumerable<CommentsScalarWhereInput>
     id?: IntFilter | number
     userId?: IntFilter | number
-    drinksId?: IntFilter | number
+    drinkId?: IntFilter | number
     content?: StringFilter | string
     created_at?: DateTimeNullableFilter | Date | string | null
     updated_at?: DateTimeNullableFilter | Date | string | null
@@ -12026,8 +12032,8 @@ export namespace Prisma {
     OR?: Enumerable<ImagesScalarWhereInput>
     NOT?: Enumerable<ImagesScalarWhereInput>
     id?: IntFilter | number
-    drinksId?: IntFilter | number
-    imagesUrl?: StringFilter | string
+    drinkId?: IntFilter | number
+    imageUrl?: StringFilter | string
   }
 
   export type LikesUpsertWithWhereUniqueWithoutDrinkInput = {
@@ -12052,7 +12058,7 @@ export namespace Prisma {
     NOT?: Enumerable<LikesScalarWhereInput>
     id?: IntFilter | number
     userId?: IntFilter | number
-    drinksId?: IntFilter | number
+    drinkId?: IntFilter | number
   }
 
   export type NutritionUpsertWithWhereUniqueWithoutDrinkInput = {
@@ -12076,7 +12082,7 @@ export namespace Prisma {
     OR?: Enumerable<NutritionScalarWhereInput>
     NOT?: Enumerable<NutritionScalarWhereInput>
     id?: IntFilter | number
-    drinksId?: IntFilter | number
+    drinkId?: IntFilter | number
     calorie?: FloatFilter | number
     natrium?: FloatFilter | number
     fat?: FloatFilter | number
@@ -12089,7 +12095,7 @@ export namespace Prisma {
     koreanName: string
     englishName: string
     description: string
-    isNew: boolean
+    isNew: number
     category: CategoriesCreateNestedOneWithoutDrinksInput
     Allergies_drinks?: Allergies_drinksCreateNestedManyWithoutDrinkInput
     Comments?: CommentsCreateNestedManyWithoutDrinkInput
@@ -12099,11 +12105,11 @@ export namespace Prisma {
 
   export type DrinksUncheckedCreateWithoutImagesInput = {
     id?: number
-    categoriesId: number
+    categoryId: number
     koreanName: string
     englishName: string
     description: string
-    isNew: boolean
+    isNew: number
     Allergies_drinks?: Allergies_drinksUncheckedCreateNestedManyWithoutDrinkInput
     Comments?: CommentsUncheckedCreateNestedManyWithoutDrinkInput
     Likes?: LikesUncheckedCreateNestedManyWithoutDrinkInput
@@ -12124,7 +12130,7 @@ export namespace Prisma {
     koreanName?: StringFieldUpdateOperationsInput | string
     englishName?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
-    isNew?: BoolFieldUpdateOperationsInput | boolean
+    isNew?: IntFieldUpdateOperationsInput | number
     category?: CategoriesUpdateOneRequiredWithoutDrinksInput
     Allergies_drinks?: Allergies_drinksUpdateManyWithoutDrinkInput
     Comments?: CommentsUpdateManyWithoutDrinkInput
@@ -12134,11 +12140,11 @@ export namespace Prisma {
 
   export type DrinksUncheckedUpdateWithoutImagesInput = {
     id?: IntFieldUpdateOperationsInput | number
-    categoriesId?: IntFieldUpdateOperationsInput | number
+    categoryId?: IntFieldUpdateOperationsInput | number
     koreanName?: StringFieldUpdateOperationsInput | string
     englishName?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
-    isNew?: BoolFieldUpdateOperationsInput | boolean
+    isNew?: IntFieldUpdateOperationsInput | number
     Allergies_drinks?: Allergies_drinksUncheckedUpdateManyWithoutDrinkInput
     Comments?: CommentsUncheckedUpdateManyWithoutDrinkInput
     Likes?: LikesUncheckedUpdateManyWithoutDrinkInput
@@ -12179,7 +12185,7 @@ export namespace Prisma {
     koreanName: string
     englishName: string
     description: string
-    isNew: boolean
+    isNew: number
     category: CategoriesCreateNestedOneWithoutDrinksInput
     Allergies_drinks?: Allergies_drinksCreateNestedManyWithoutDrinkInput
     Comments?: CommentsCreateNestedManyWithoutDrinkInput
@@ -12189,11 +12195,11 @@ export namespace Prisma {
 
   export type DrinksUncheckedCreateWithoutLikesInput = {
     id?: number
-    categoriesId: number
+    categoryId: number
     koreanName: string
     englishName: string
     description: string
-    isNew: boolean
+    isNew: number
     Allergies_drinks?: Allergies_drinksUncheckedCreateNestedManyWithoutDrinkInput
     Comments?: CommentsUncheckedCreateNestedManyWithoutDrinkInput
     Images?: ImagesUncheckedCreateNestedManyWithoutDrinkInput
@@ -12244,7 +12250,7 @@ export namespace Prisma {
     koreanName?: StringFieldUpdateOperationsInput | string
     englishName?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
-    isNew?: BoolFieldUpdateOperationsInput | boolean
+    isNew?: IntFieldUpdateOperationsInput | number
     category?: CategoriesUpdateOneRequiredWithoutDrinksInput
     Allergies_drinks?: Allergies_drinksUpdateManyWithoutDrinkInput
     Comments?: CommentsUpdateManyWithoutDrinkInput
@@ -12254,11 +12260,11 @@ export namespace Prisma {
 
   export type DrinksUncheckedUpdateWithoutLikesInput = {
     id?: IntFieldUpdateOperationsInput | number
-    categoriesId?: IntFieldUpdateOperationsInput | number
+    categoryId?: IntFieldUpdateOperationsInput | number
     koreanName?: StringFieldUpdateOperationsInput | string
     englishName?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
-    isNew?: BoolFieldUpdateOperationsInput | boolean
+    isNew?: IntFieldUpdateOperationsInput | number
     Allergies_drinks?: Allergies_drinksUncheckedUpdateManyWithoutDrinkInput
     Comments?: CommentsUncheckedUpdateManyWithoutDrinkInput
     Images?: ImagesUncheckedUpdateManyWithoutDrinkInput
@@ -12269,7 +12275,7 @@ export namespace Prisma {
     koreanName: string
     englishName: string
     description: string
-    isNew: boolean
+    isNew: number
     category: CategoriesCreateNestedOneWithoutDrinksInput
     Allergies_drinks?: Allergies_drinksCreateNestedManyWithoutDrinkInput
     Comments?: CommentsCreateNestedManyWithoutDrinkInput
@@ -12279,11 +12285,11 @@ export namespace Prisma {
 
   export type DrinksUncheckedCreateWithoutNutritionInput = {
     id?: number
-    categoriesId: number
+    categoryId: number
     koreanName: string
     englishName: string
     description: string
-    isNew: boolean
+    isNew: number
     Allergies_drinks?: Allergies_drinksUncheckedCreateNestedManyWithoutDrinkInput
     Comments?: CommentsUncheckedCreateNestedManyWithoutDrinkInput
     Images?: ImagesUncheckedCreateNestedManyWithoutDrinkInput
@@ -12304,7 +12310,7 @@ export namespace Prisma {
     koreanName?: StringFieldUpdateOperationsInput | string
     englishName?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
-    isNew?: BoolFieldUpdateOperationsInput | boolean
+    isNew?: IntFieldUpdateOperationsInput | number
     category?: CategoriesUpdateOneRequiredWithoutDrinksInput
     Allergies_drinks?: Allergies_drinksUpdateManyWithoutDrinkInput
     Comments?: CommentsUpdateManyWithoutDrinkInput
@@ -12314,11 +12320,11 @@ export namespace Prisma {
 
   export type DrinksUncheckedUpdateWithoutNutritionInput = {
     id?: IntFieldUpdateOperationsInput | number
-    categoriesId?: IntFieldUpdateOperationsInput | number
+    categoryId?: IntFieldUpdateOperationsInput | number
     koreanName?: StringFieldUpdateOperationsInput | string
     englishName?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
-    isNew?: BoolFieldUpdateOperationsInput | boolean
+    isNew?: IntFieldUpdateOperationsInput | number
     Allergies_drinks?: Allergies_drinksUncheckedUpdateManyWithoutDrinkInput
     Comments?: CommentsUncheckedUpdateManyWithoutDrinkInput
     Images?: ImagesUncheckedUpdateManyWithoutDrinkInput
@@ -12334,7 +12340,7 @@ export namespace Prisma {
 
   export type CommentsUncheckedCreateWithoutUserInput = {
     id?: number
-    drinksId: number
+    drinkId: number
     content: string
     created_at?: Date | string | null
     updated_at?: Date | string | null
@@ -12356,7 +12362,7 @@ export namespace Prisma {
 
   export type LikesUncheckedCreateWithoutUserInput = {
     id?: number
-    drinksId: number
+    drinkId: number
   }
 
   export type LikesCreateOrConnectWithoutUserInput = {
@@ -12403,7 +12409,7 @@ export namespace Prisma {
 
   export type Allergies_drinksCreateManyAllergieInput = {
     id?: number
-    drinksId: number
+    drinkId: number
   }
 
   export type Allergies_drinksUpdateWithoutAllergieInput = {
@@ -12412,12 +12418,12 @@ export namespace Prisma {
 
   export type Allergies_drinksUncheckedUpdateWithoutAllergieInput = {
     id?: IntFieldUpdateOperationsInput | number
-    drinksId?: IntFieldUpdateOperationsInput | number
+    drinkId?: IntFieldUpdateOperationsInput | number
   }
 
   export type Allergies_drinksUncheckedUpdateManyWithoutAllergies_drinkInput = {
     id?: IntFieldUpdateOperationsInput | number
-    drinksId?: IntFieldUpdateOperationsInput | number
+    drinkId?: IntFieldUpdateOperationsInput | number
   }
 
   export type DrinksCreateManyCategoryInput = {
@@ -12425,14 +12431,14 @@ export namespace Prisma {
     koreanName: string
     englishName: string
     description: string
-    isNew: boolean
+    isNew: number
   }
 
   export type DrinksUpdateWithoutCategoryInput = {
     koreanName?: StringFieldUpdateOperationsInput | string
     englishName?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
-    isNew?: BoolFieldUpdateOperationsInput | boolean
+    isNew?: IntFieldUpdateOperationsInput | number
     Allergies_drinks?: Allergies_drinksUpdateManyWithoutDrinkInput
     Comments?: CommentsUpdateManyWithoutDrinkInput
     Images?: ImagesUpdateManyWithoutDrinkInput
@@ -12445,7 +12451,7 @@ export namespace Prisma {
     koreanName?: StringFieldUpdateOperationsInput | string
     englishName?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
-    isNew?: BoolFieldUpdateOperationsInput | boolean
+    isNew?: IntFieldUpdateOperationsInput | number
     Allergies_drinks?: Allergies_drinksUncheckedUpdateManyWithoutDrinkInput
     Comments?: CommentsUncheckedUpdateManyWithoutDrinkInput
     Images?: ImagesUncheckedUpdateManyWithoutDrinkInput
@@ -12458,12 +12464,12 @@ export namespace Prisma {
     koreanName?: StringFieldUpdateOperationsInput | string
     englishName?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
-    isNew?: BoolFieldUpdateOperationsInput | boolean
+    isNew?: IntFieldUpdateOperationsInput | number
   }
 
   export type Allergies_drinksCreateManyDrinkInput = {
     id?: number
-    allergiesId: number
+    allergieId: number
   }
 
   export type CommentsCreateManyDrinkInput = {
@@ -12476,7 +12482,7 @@ export namespace Prisma {
 
   export type ImagesCreateManyDrinkInput = {
     id?: number
-    imagesUrl: string
+    imageUrl: string
   }
 
   export type LikesCreateManyDrinkInput = {
@@ -12500,12 +12506,12 @@ export namespace Prisma {
 
   export type Allergies_drinksUncheckedUpdateWithoutDrinkInput = {
     id?: IntFieldUpdateOperationsInput | number
-    allergiesId?: IntFieldUpdateOperationsInput | number
+    allergieId?: IntFieldUpdateOperationsInput | number
   }
 
   export type Allergies_drinksUncheckedUpdateManyWithoutAllergies_drinksInput = {
     id?: IntFieldUpdateOperationsInput | number
-    allergiesId?: IntFieldUpdateOperationsInput | number
+    allergieId?: IntFieldUpdateOperationsInput | number
   }
 
   export type CommentsUpdateWithoutDrinkInput = {
@@ -12532,17 +12538,17 @@ export namespace Prisma {
   }
 
   export type ImagesUpdateWithoutDrinkInput = {
-    imagesUrl?: StringFieldUpdateOperationsInput | string
+    imageUrl?: StringFieldUpdateOperationsInput | string
   }
 
   export type ImagesUncheckedUpdateWithoutDrinkInput = {
     id?: IntFieldUpdateOperationsInput | number
-    imagesUrl?: StringFieldUpdateOperationsInput | string
+    imageUrl?: StringFieldUpdateOperationsInput | string
   }
 
   export type ImagesUncheckedUpdateManyWithoutImagesInput = {
     id?: IntFieldUpdateOperationsInput | number
-    imagesUrl?: StringFieldUpdateOperationsInput | string
+    imageUrl?: StringFieldUpdateOperationsInput | string
   }
 
   export type LikesUpdateWithoutDrinkInput = {
@@ -12590,7 +12596,7 @@ export namespace Prisma {
 
   export type CommentsCreateManyUserInput = {
     id?: number
-    drinksId: number
+    drinkId: number
     content: string
     created_at?: Date | string | null
     updated_at?: Date | string | null
@@ -12598,7 +12604,7 @@ export namespace Prisma {
 
   export type LikesCreateManyUserInput = {
     id?: number
-    drinksId: number
+    drinkId: number
   }
 
   export type CommentsUpdateWithoutUserInput = {
@@ -12610,7 +12616,7 @@ export namespace Prisma {
 
   export type CommentsUncheckedUpdateWithoutUserInput = {
     id?: IntFieldUpdateOperationsInput | number
-    drinksId?: IntFieldUpdateOperationsInput | number
+    drinkId?: IntFieldUpdateOperationsInput | number
     content?: StringFieldUpdateOperationsInput | string
     created_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     updated_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -12622,7 +12628,7 @@ export namespace Prisma {
 
   export type LikesUncheckedUpdateWithoutUserInput = {
     id?: IntFieldUpdateOperationsInput | number
-    drinksId?: IntFieldUpdateOperationsInput | number
+    drinkId?: IntFieldUpdateOperationsInput | number
   }
 
 

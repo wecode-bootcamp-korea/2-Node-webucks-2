@@ -83,8 +83,8 @@ exports.Prisma.AllergiesScalarFieldEnum = makeEnum({
 
 exports.Prisma.Allergies_drinksScalarFieldEnum = makeEnum({
   id: 'id',
-  allergiesId: 'allergiesId',
-  drinksId: 'drinksId'
+  allergieId: 'allergieId',
+  drinkId: 'drinkId'
 });
 
 exports.Prisma.CategoriesScalarFieldEnum = makeEnum({
@@ -95,7 +95,7 @@ exports.Prisma.CategoriesScalarFieldEnum = makeEnum({
 exports.Prisma.CommentsScalarFieldEnum = makeEnum({
   id: 'id',
   userId: 'userId',
-  drinksId: 'drinksId',
+  drinkId: 'drinkId',
   content: 'content',
   created_at: 'created_at',
   updated_at: 'updated_at'
@@ -103,7 +103,7 @@ exports.Prisma.CommentsScalarFieldEnum = makeEnum({
 
 exports.Prisma.DrinksScalarFieldEnum = makeEnum({
   id: 'id',
-  categoriesId: 'categoriesId',
+  categoryId: 'categoryId',
   koreanName: 'koreanName',
   englishName: 'englishName',
   description: 'description',
@@ -112,19 +112,19 @@ exports.Prisma.DrinksScalarFieldEnum = makeEnum({
 
 exports.Prisma.ImagesScalarFieldEnum = makeEnum({
   id: 'id',
-  drinksId: 'drinksId',
-  imagesUrl: 'imagesUrl'
+  drinkId: 'drinkId',
+  imageUrl: 'imageUrl'
 });
 
 exports.Prisma.LikesScalarFieldEnum = makeEnum({
   id: 'id',
   userId: 'userId',
-  drinksId: 'drinksId'
+  drinkId: 'drinkId'
 });
 
 exports.Prisma.NutritionScalarFieldEnum = makeEnum({
   id: 'id',
-  drinksId: 'drinksId',
+  drinkId: 'drinkId',
   calorie: 'calorie',
   natrium: 'natrium',
   fat: 'fat',

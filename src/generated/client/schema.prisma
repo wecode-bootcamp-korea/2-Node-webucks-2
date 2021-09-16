@@ -17,11 +17,11 @@ model Allergies {
 }
 
 model Allergies_drinks {
-  id          Int       @id @default(autoincrement())
-  allergie    Allergies @relation(fields: [allergiesId], references: [id])
-  allergiesId Int       @map("allergies_id")
-  drink       Drinks    @relation(fields: [drinksId], references: [id])
-  drinksId    Int       @map("drinks_id")
+  id         Int       @id @default(autoincrement())
+  allergie   Allergies @relation(fields: [allergieId], references: [id])
+  allergieId Int       @map("allergie_id")
+  drink      Drinks    @relation(fields: [drinkId], references: [id])
+  drinkId    Int       @map("drink_id")
 
   @@map("allergies_drinks")
 }
@@ -38,8 +38,8 @@ model Comments {
   id         Int       @id @default(autoincrement())
   user       Users     @relation(fields: [userId], references: [id])
   userId     Int       @map("user_id")
-  drink      Drinks    @relation(fields: [drinksId], references: [id])
-  drinksId   Int       @map("drinks_id")
+  drink      Drinks    @relation(fields: [drinkId], references: [id])
+  drinkId    Int       @map("drink_id")
   content    String
   created_at DateTime? @default(now())
   updated_at DateTime? @default(now())
@@ -48,13 +48,13 @@ model Comments {
 }
 
 model Drinks {
-  id           Int        @id @default(autoincrement())
-  category     Categories @relation(fields: [categoriesId], references: [id])
-  categoriesId Int        @map("categories_id")
-  koreanName   String     @map("korean_name") @db.VarChar(100)
-  englishName  String     @map("english_name") @db.VarChar(100)
-  description  String
-  isNew        Boolean    @map("is_new") @db.TinyInt
+  id          Int        @id @default(autoincrement())
+  category    Categories @relation(fields: [categoryId], references: [id])
+  categoryId  Int        @map("category_id")
+  koreanName  String     @map("korean_name") @db.VarChar(100)
+  englishName String     @map("english_name") @db.VarChar(100)
+  description String
+  isNew       Int        @map("is_new") @db.TinyInt
 
   Allergies_drinks Allergies_drinks[]
   Comments         Comments[]
@@ -66,28 +66,28 @@ model Drinks {
 }
 
 model Images {
-  id        Int    @id @default(autoincrement())
-  drink     Drinks @relation(fields: [drinksId], references: [id])
-  drinksId  Int    @map("drinks_id")
-  imagesUrl String @map("images_url")
+  id       Int    @id @default(autoincrement())
+  drink    Drinks @relation(fields: [drinkId], references: [id])
+  drinkId  Int    @map("drink_id")
+  imageUrl String @map("image_url")
 
   @@map("images")
 }
 
 model Likes {
-  id       Int    @id @default(autoincrement())
-  userId   Int    @map("user_id")
-  drinksId Int    @map("drinks_id")
-  user     Users  @relation(fields: [userId], references: [id])
-  drink    Drinks @relation(fields: [drinksId], references: [id])
+  id      Int    @id @default(autoincrement())
+  userId  Int    @map("user_id")
+  drinkId Int    @map("drink_id")
+  user    Users  @relation(fields: [userId], references: [id])
+  drink   Drinks @relation(fields: [drinkId], references: [id])
 
   @@map("likes")
 }
 
 model Nutrition {
   id       Int    @id @default(autoincrement())
-  drink    Drinks @relation(fields: [drinksId], references: [id])
-  drinksId Int    @map("drinks_id")
+  drink    Drinks @relation(fields: [drinkId], references: [id])
+  drinkId  Int    @map("drink_id")
   calorie  Float  @db.Double
   natrium  Float  @db.Double
   fat      Float  @db.Double
