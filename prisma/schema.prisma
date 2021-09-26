@@ -23,7 +23,7 @@ model Product {
   id          Int      @id @default(autoincrement())
   name        String
   koreanName  String   @map("korean_name")
-  englishName Boolean  @map("english_name")
+  englishName String   @map("english_name")
   categoryId  Int      @map("categories_id")
   category    Category @relation(fields: [categoryId], references: [id])
 
@@ -62,8 +62,12 @@ model ProductAllergy {
 
 model Nutrition {
   id        Int     @id @default(autoincrement())
-  name      String
-  amount    Int
+  calories  Decimal
+  natrium   Decimal
+  fat       Decimal
+  sugars    Decimal
+  protein   Decimal
+  caffeine  Decimal
   productId Int     @map("product_id")
   product   Product @relation(fields: [productId], references: [id])
 

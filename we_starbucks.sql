@@ -150,7 +150,7 @@ UNLOCK TABLES;
 
 --
 -- Table structure for table `nutrients`
---
+--j
 
 DROP TABLE IF EXISTS `nutrients`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
