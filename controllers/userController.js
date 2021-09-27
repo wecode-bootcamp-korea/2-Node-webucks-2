@@ -1,11 +1,15 @@
 import { userService } from '../services';
 
 const findAllUsers = async (req, res) => {
-  const users = await userService.findAllUsers();
-  res.status(201).json({
-    message: 'SUCCESS',
-    data: users,
-  });
+  try {
+    const users = await userService.findAllUsers();
+    res.status(201).json({
+      message: 'SUCCESS',
+      data: users,
+    });
+  } catch {
+    console.log(err);
+  }
 };
 
 const createUser = async (req, res) => {
