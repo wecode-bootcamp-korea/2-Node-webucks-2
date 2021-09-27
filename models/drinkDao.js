@@ -15,34 +15,7 @@ const getDrinkList = async () => {
   `;
 };
 
-const getDrinkDetail = async () => {
-  return await prisma.$queryRaw`
-    SELECT
-      d.id,
-      d.korean_name,
-      d.english_name,
-      i.image_url,
-      d.description,
-      n.calories,
-      n.fat,
-      n.protein,
-      n.sodium,
-      n.sugars,
-      n.caffeine
-    FROM
-      drinks d
-    LEFT JOIN
-      images i
-    ON
-      i.drink_id = d.id
-    LEFT JOIN
-      nutritions n
-    ON
-      n.drink_id = d.id
-  `;
-};
-
-const getDrinkDetailById = async id => {
+const getDrinkDetail = async id => {
   return await prisma.$queryRaw`
     SELECT
       d.id,
@@ -71,4 +44,4 @@ const getDrinkDetailById = async id => {
   `;
 };
 
-export default { getDrinkList, getDrinkDetail, getDrinkDetailById };
+export default { getDrinkList, getDrinkDetail };

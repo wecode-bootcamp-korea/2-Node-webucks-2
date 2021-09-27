@@ -4,7 +4,6 @@ import { drinkController } from '../controllers/';
 const drinkRouter = express.Router();
 
 drinkRouter.get('/', drinkController.getDrinkList);
-drinkRouter.get('/detail', drinkController.getDrinkDetail);
-drinkRouter.get('/detail/:id', drinkController.getDrinkDetailById);
+drinkRouter.get('/:id', drinkController.getDrinkDetail);
 
 export default drinkRouter;

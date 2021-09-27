@@ -5,6 +5,22 @@ const getUsers = async (req, res) => {
   res.json(users);
 };
 
+const login = async (req, res) => {
+  const { email, password } = req.body;
+  try {
+    const user = await userService.login(email.password);
+    const token = await userService.createToken(user);
+    if (!user) {
+      res.status(401).json('please check email or password');
+    } else {
+      res.cooke('user', token);
+      res.json(user);
+    }
+  } catch (error) {
+    res.status(500).send('invalid user');
+  }
+};
+
 const createUser = async (req, res) => {
   const { email, password, username, address, phone_number, policy_agreed } =
     req.body;
@@ -21,4 +37,4 @@ const createUser = async (req, res) => {
   });
 };
 
-export default { getUsers, createUser };
+export default { getUsers, login, createUser };

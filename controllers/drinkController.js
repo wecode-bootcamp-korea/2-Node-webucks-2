@@ -6,14 +6,9 @@ const getDrinkList = async (req, res) => {
 };
 
 const getDrinkDetail = async (req, res) => {
-  const drinkDetail = await drinkService.getDrinkDetail();
+  const id = req.params.id;
+  const drinkDetail = await drinkService.getDrinkDetail(id);
   res.json(drinkDetail);
 };
 
-const getDrinkDetailById = async (req, res) => {
-  const id = req.params.id;
-  const drinkDetailById = await drinkService.getDrinkDetailById(id);
-  res.json(drinkDetailById);
-};
-
-export default { getDrinkList, getDrinkDetail, getDrinkDetailById };
+export default { getDrinkList, getDrinkDetail };
