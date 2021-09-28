@@ -5,8 +5,8 @@ import userRouter from './userRouter';
 
 const router = express.Router();
 
-router.use('/list', listRouter);
-router.use('/detail', detailRouter);
-router.use('/user', userRouter);
+router.use('/lists', listRouter);
+router.use('/details', detailRouter);
+router.use('/users', userRouter);
 
 export default router;

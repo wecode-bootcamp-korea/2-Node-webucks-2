@@ -1,28 +1,56 @@
-import prisma from '../prisma';
-import express from 'express';
+import userDao from '../models/userDao';
+import dotenv from 'dotenv';
+import jwt from 'jsonwebtoken';
+import bcrypt from 'bcrypt';
 
-const app = express();
+dotenv.config();
+const { COOKIE_SECRET } = process.env;
 
-const userService = () => {
-  app.post('/users', async (req, res) => {
-    await prisma.$queryRaw`
-    INSERT INTO users
-      (id, email, password, username, address, phone_number) 
-    VALUES 
-      (1, 'goplanit19@gmail.com', 'aaaa1111!', '고원구', '구리시', '010-5558-8846'),
-      (2, 'abc@gmail.com', 'aaaa1111!', '이은정', '구리시', '010-5558-8846'),
-      (3, 'ddd@gmail.com', 'bbbb1111!', '한지훈', '서울시', '010-1234-5678'),
-      (4, 'gee@gmail.com', 'cccc1111!', '김원영', '서울시', '010-4444-3333'),
-      (5, 'www@gmail.com', 'dddd1111!', '이민재', '서울시', '010-2424-5555');
-  `;
-
-    const users = await prisma.$queryRaw`
-    SELECT *
-    FROM users;
-  `;
-
-    res.json(users);
-  });
+const getUsers = async () => {
+  return await userDao.getUsers();
 };
 
-export default userService;
+const getUsersByEmail = async email => {
+  const [userInfoByEmail] = await userDao.getUsersByEmail(email);
+  return userInfoByEmail;
+};
+
+const login = async (email, password) => {
+  const user = await userDao.getUsersByEmail(email);
+  if (user) {
+    const checkPassword = await bcrypt.compare(password, user[0].password);
+    if (checkPassword) {
+      return user;
+    } else {
+      throw new error('패스워드가 틀립니다. 다시 입력해주세요.');
+    }
+  }
+};
+
+const createToken = async user => {
+  token = jwt.sign({ email: user.email }, COOKIE_SECRET, {
+    algorithm: 'RS256',
+    expiresIn: '3d',
+  });
+  return token;
+};
+
+const createUser = async userInfo => {
+  const { email, password, username, address, phoneNumber, policyAgreed } =
+    userInfo;
+  const isUser = await getUsersByEmail(email, next);
+
+  if (!isUser) {
+    const hash = await bcrypt.hash(password, 12);
+    return await userDao.createUser(
+      email,
+      password,
+      username,
+      address,
+      phoneNumber,
+      policyAgreed
+    );
+  }
+};
+
+export default { getUsers, login, createToken, createUser };

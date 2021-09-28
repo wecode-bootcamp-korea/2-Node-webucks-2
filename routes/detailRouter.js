@@ -1,8 +1,9 @@
 import express from 'express';
 import { detailController } from '../controllers';
 
-const router = express.Router();
+const detailRouter = express.Router();
 
-router.get('/detail', detailController);
+detailRouter.get('/', detailController.getDrinkList);
+detailRouter.get('/:id', detailController.getDrinkDetail);
 
-export default router;
+export default detailRouter;
