@@ -1,20 +1,5 @@
 import prisma from '../prisma';
 
-const findAllUsers = async () => {
-  const users = await prisma.$queryRaw`
-    SELECT
-      email, 
-      password, 
-      username, 
-      address, 
-      phone_number
-    FROM
-      users;
-  `;
-  return users;
-};
-
-
 const createUser = async ( email, hashPW ,username, address, phone_number) => {
   const doesUserExist = await prisma.$queryRaw`
   SELECT users.email FROM users WHERE users.email = ${email}`;
@@ -40,10 +25,20 @@ const createUser = async ( email, hashPW ,username, address, phone_number) => {
     );`
   };
 
-export default {
-  findAllUsers,
-  createUser,
-}
+const loginUser = async email => {
+  try {
+    const [users] = await prisma.$queryRaw`
+    SELECT users.password  FROM users WHERE users.email=${email}`;
+    
+    if (!users) {
+      throw new Error('User does not Exist');
+    } return users
+  } catch (err) {
+    console.log(err);
+  }
+}; 
+
+export default { createUser, loginUser }
 
 
 

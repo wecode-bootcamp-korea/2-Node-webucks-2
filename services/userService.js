@@ -1,19 +1,10 @@
 import { userDao } from '../models'
 import bcrypt from 'bcrypt';
+import dotenv from 'dotenv';
+import jwt from 'jsonwebtoken';
 
-
-
-const findAllUsers = async (req, res) => {
-  try {
-    const users = await userDao.findAllUsers();
-    res.status(201).json({
-      message : 'success',
-      users,
-    });
-  } catch (err) {
-    console.log(err);
-  } 
-};
+dotenv.config();
+const secretkey = process.env;
 
 const createUser = async (email, password, username, address, phone_number) => {
   try {
@@ -30,6 +21,19 @@ const createUser = async (email, password, username, address, phone_number) => {
   }
 };
 
+const loginUser = async (email, password) => {
+  try {
+    const user = await userDao.loginUser(email,password)
+    if (user) {
+      const result = await bcrypt.compare(password, user.password);  
+      if (result) {
+        const token = jwt.sign({ id : email }, 'secretkey', { expiresIn : '1h'});
+        return token;
+      }
+    } 
+  } catch (err) {
+    console.log(err);
+  }
+}
 
-
-export default { findAllUsers, createUser};
+export default { createUser, loginUser };
