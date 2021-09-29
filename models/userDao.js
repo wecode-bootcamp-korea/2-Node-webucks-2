@@ -1,6 +1,6 @@
 import prisma from '../prisma';
 
-const findAllUsers = async (req, res) => {
+const findAllUsers = async () => {
   return await prisma.$queryRaw`
     SELECT
       u.id,
@@ -17,12 +17,22 @@ const findAllUsers = async (req, res) => {
 
 const createUser = async (
   email,
-  password,
+  hashPw,
   username,
   address,
   phone_number,
   policy_agreed
 ) => {
+  const userExist = await prisma.$queryRaw`
+  SELECT * FROM 
+    users
+  WHERE
+    email=${email}
+  `;
+
+  if (!userExist) {
+    throw new Error('user already exist');
+  }
   return await prisma.$queryRaw`
     INSERT INTO
       users(
@@ -35,7 +45,7 @@ const createUser = async (
       )
     VALUES (
       ${email},
-      ${password},
+      ${hashPw},
       ${username},
       ${address},
       ${phone_number},

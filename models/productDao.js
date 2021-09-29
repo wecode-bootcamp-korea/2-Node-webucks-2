@@ -1,6 +1,6 @@
 import prisma from '../prisma';
 
-const findAllProducts = async (req, res) => {
+const findAllProducts = async () => {
   return await prisma.$queryRaw`
     SELECT
       p.id,
@@ -13,7 +13,7 @@ const findAllProducts = async (req, res) => {
   `;
 };
 
-const findAllProductsDetail = async (req, res) => {
+const findAllProductsDetail = async () => {
   return await prisma.$queryRaw`
     SELECT
       p.english_name,
