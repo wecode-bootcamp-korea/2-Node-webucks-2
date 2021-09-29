@@ -8,15 +8,14 @@ const getUsers = async (req, res) => {
 const login = async (req, res) => {
   const { email, password } = req.body;
   try {
-    const user = await userService.login(email.password);
-    const token = await userService.createToken(user);
-    if (!user) {
+    const loginResult = await userService.login(email, password);
+    if (!loginResult) {
       res.status(401).json('please check email or password');
     } else {
-      res.cooke('user', token);
-      res.json(user);
+      res.json(loginResult);
     }
   } catch (error) {
+    console.log(error);
     res.status(500).send('invalid user');
   }
 };

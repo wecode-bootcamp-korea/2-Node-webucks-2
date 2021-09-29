@@ -2,22 +2,13 @@ import prisma from '../prisma';
 
 const getUsers = async () => {
   return await prisma.$queryRaw`
-    SELECT
-      u.id,
-      u.email,
-      u.password,
-      u.username,
-      u.address,
-      u.phone_number,
-      u.policy_agreed
-    FROM
-      users u
+    SELECT * FROM users
   `;
 };
 
 const login = async email => {
   return await prisma.$queryRaw`
-    SELECT * from users
+    SELECT * FROM users
     WHERE email=${email};
   `;
 };

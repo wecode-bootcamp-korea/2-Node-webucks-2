@@ -14,13 +14,12 @@ const login = async (email, password) => {
   const user = await userDao.login(email);
   const validPassword = await bcrypt.compare(password, user[0].password);
   if (validPassword) {
-    return user;
-  } else throw new error('invalid password');
-};
-
-const createToken = async user => {
-  const token = jwt.sign({ email: user.email }, secretkey, { expiresIn: '1d' });
-  return token;
+    const token = jwt.sign({ id: user[0].email }, secretkey, {
+      expiresIn: '1h',
+    });
+    return { user: user[0], token };
+  } else {
+  }
 };
 
 const createUser = async (
@@ -42,4 +41,4 @@ const createUser = async (
   );
 };
 
-export default { getUsers, login, createToken, createUser };
+export default { getUsers, login, createUser };
