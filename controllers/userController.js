@@ -1,27 +1,30 @@
 import {userService} from '../services';
 
-const findAllUsers = async ( req, res) => {
+const findAllUsers = async () => {
+  return await userService.findAllUsers();
+};
+
+const createUser = async (req, res) => {
   try {
-    const users = await userService.findAllUsers();
-    res.status(201).json({
-      message : 'success',
-      data: users,
-    });
+    const { email, password, username, address, phone_number } = req.body;
+    const create = await userService.createUser(email, password, username, address, phone_number);
+    res.status(200).json({
+      message: 'SUCCESS',
+    })
   } catch (err) {
     console.log(err);
   }
 };
 
-const createUser = async(req, res) => {
+const loginUser = async (req, res) => {
   try {
-    const { username, email, password} = req.body;
-    await userService.createUser(username, email, password);
-    res.status(201).json({
-      message : 'created',
-    });
+    const {email, password} = req.body;
+    return res.status(200).json({
+      message : 'SUCCESS'
+    })
   } catch (err) {
-    console.log(err);
+    console.log(err)
   }
 };
 
-export default { findAllUsers, createUser};
+export default { findAllUsers, createUser, loginUser };
