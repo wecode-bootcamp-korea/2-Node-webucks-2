@@ -1,8 +1,12 @@
 import { categoryService } from '../services';
 
 const getCategoryList = async (req, res) => {
-  const categoryList = await categoryService.getCategoryList();
-  res.json(categoryList);
+  try {
+    const categoryList = await categoryService.getCategoryList();
+    res.json(categoryList);
+  } catch (error) {
+    console.log(error);
+  }
 };
 
 export default { getCategoryList };

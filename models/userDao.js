@@ -13,14 +13,9 @@ const login = async email => {
   `;
 };
 
-const createUser = async (
-  email,
-  password,
-  username,
-  address,
-  phone_number,
-  policy_agreed
-) => {
+const signup = async userData => {
+  const { email, password, username, address, phone_number, policy_agreed } =
+    userData;
   return await prisma.$queryRaw`
     INSERT INTO
       users(
@@ -42,4 +37,4 @@ const createUser = async (
   `;
 };
 
-export default { getUsers, login, createUser };
+export default { getUsers, login, signup };
