@@ -1,9 +1,12 @@
 import express from 'express';
-import { detailController } from '../controllers';
+import {
+  getDrinkDetailController,
+  getDrinkListController,
+} from '../controllers/detailController';
 
 const detailRouter = express.Router();
 
-detailRouter.get('/', detailController.getDrinkList);
-detailRouter.get('/:id', detailController.getDrinkDetail);
+detailRouter.get('/', getDrinkListController);
+detailRouter.get('/:id', getDrinkDetailController);
 
 export default detailRouter;

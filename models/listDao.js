@@ -1,6 +1,6 @@
 import prisma from '../prisma';
 
-const getCategory = async () => {
+export const getCategoryModel = async () => {
   return await prisma.$queryRaw`
     SELECT
       id, name
@@ -9,7 +9,7 @@ const getCategory = async () => {
   ;`;
 };
 
-const getCategoryById = async id => {
+export const getCategoryByIdModel = async id => {
   return await prisma.$queryRaw`
     SELECT
       id, name
@@ -18,5 +18,3 @@ const getCategoryById = async id => {
     WHERE id = ${id}
   ;`;
 };
-
-export default { getCategory, getCategoryById };

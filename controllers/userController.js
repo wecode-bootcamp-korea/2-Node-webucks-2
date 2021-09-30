@@ -1,46 +1,55 @@
-import { userService } from '../services';
+import {
+  createToken,
+  createUserService,
+  getUsersService,
+  loginService,
+} from '../services/userService';
+import { ERRORS } from '../utils/error';
 
-const getUsers = async (req, res) => {
+export const getUsersController = async (req, res) => {
+  const users = await getUsersService();
   try {
-    const users = await userService.getUsers();
     res.status(200).json({
       message: 'SUCCESS',
       data: users,
     });
   } catch (err) {
-    res.status(500).send('유저를 불러올 수 없습니다. 다시 시도해주세요.');
+    res.status(500).send(ERRORS.NO_USERS);
   }
 };
 
-const login = async (req, res) => {
+export const loginController = async (req, res) => {
   const { email, password } = req.body;
   try {
-    const user = await userService.login(email, password);
-    const token = await userService.createToken(user);
+    const user = await loginService(email, password);
+    const token = await createToken(user);
     if (!token) {
-      res
-        .status(401)
-        .json('이메일 또는 비밀번호가 틀립니다. 다시 입력해주세요.');
+      res.status(401).send(ERRORS.WRONG_INPUT);
     } else {
       res.cookie('user', token, {
         httpOnly: true,
         secure: false,
       });
       return res.status(201).json({
-        message: '로그인 성공',
+        message: 'SUCCESS',
         token,
       });
     }
   } catch (error) {
-    res.status(500).send('로그인 할 수 없습니다. 다시 입력해주세요.');
+    res.status(500).send(ERRORS.WRONG_INPUT);
   }
 };
 
-const createUser = async (req, res) => {
+export const logoutController = async (req, res) => {
+  res.clearCookie('user');
+  res.redirect('/login');
+};
+
+export const createUserController = async (req, res) => {
   try {
     const { email, password, username, address, phoneNumber, policyAgreed } =
       req.body;
-    const signupUser = await userService.createUser(
+    const signupUser = await createUserService(
       email,
       password,
       username,
@@ -48,18 +57,11 @@ const createUser = async (req, res) => {
       phoneNumber,
       policyAgreed
     );
-    if (!signupUser) {
-      res.status(401).json({
-        message: '이미 가입된 이메일 주소입니다.',
-      });
-    }
     res.status(201).json({
       message: 'CREATED',
       user: signupUser,
     });
   } catch (err) {
-    res.status(500).send('회원가입 할 수 없습니다. 다시 입력해주세요.');
+    res.status(500).send(ERRORS.EXIST_EMAIL);
   }
 };
-
-export default { getUsers, login, createUser };

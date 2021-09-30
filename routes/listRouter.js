@@ -1,9 +1,12 @@
 import express from 'express';
-import { listController } from '../controllers';
+import {
+  getCategoryByIdController,
+  getCategoryController,
+} from '../controllers/listController';
 
 const listRouter = express.Router();
 
-listRouter.get('/', listController.getCategory);
-listRouter.get('/:id', listController.getCategoryById);
+listRouter.get('/', getCategoryController);
+listRouter.get('/:id', getCategoryByIdController);
 
 export default listRouter;

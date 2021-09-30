@@ -1,30 +1,32 @@
-import { listService } from '../services';
+import {
+  getCategoryService,
+  getCategoryByIdService,
+} from '../services/listService';
+import { ERRORS } from '../utils/error';
 
-const getCategory = async (req, res) => {
-  const categoryList = await listService.getCategory();
+export const getCategoryController = async (req, res) => {
+  const categoryList = await getCategoryService();
   try {
     res.status(200).json({
       message: 'SUCCESS',
       data: categoryList,
     });
   } catch (err) {
-    res.status(500).send('카테고리를 불러올 수 없습니다. 다시 시도해주세요.');
+    res.status(500).send(ERRORS.NO_ITEMS);
   }
   return categoryList;
 };
 
-const getCategoryById = async (req, res) => {
-  const id = req.params.id;
-  const categoryId = await listService.getCategoryById(id);
+export const getCategoryByIdController = async (req, res) => {
+  const { id } = req.params;
+  const categoryId = await getCategoryByIdService(id);
   try {
     res.status(200).json({
       message: 'SUCCESS',
       data: categoryId,
     });
   } catch (err) {
-    res.status(500).send('카테고리ID를 불러올 수 없습니다. 다시 시도해주세요.');
+    res.status(500).send(ERRORS.NO_ITEMS);
   }
   return categoryId;
 };
-
-export default { getCategory, getCategoryById };

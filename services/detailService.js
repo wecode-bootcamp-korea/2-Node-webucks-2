@@ -1,13 +1,11 @@
-import detailDao from '../models/detailDao';
+import { getDrinkListModel, getDrinkDetailModel } from '../models/detailDao';
 
-const getDrinkList = async () => {
-  const drinkList = await detailDao.getDrinkList();
+export const getDrinkListService = async () => {
+  const drinkList = await getDrinkListModel();
   return drinkList;
 };
 
-const getDrinkDetail = async id => {
-  const drinkDetail = await detailDao.getDrinkDetail(id);
+export const getDrinkDetailService = async id => {
+  const drinkDetail = await getDrinkDetailModel(id);
   return drinkDetail;
 };
-
-export default { getDrinkList, getDrinkDetail };

@@ -1,6 +1,6 @@
 import prisma from '../prisma';
 
-const getDrinkList = async () => {
+export const getDrinkListModel = async () => {
   return await prisma.$queryRaw`
     SELECT
       id,
@@ -13,7 +13,7 @@ const getDrinkList = async () => {
   ;`;
 };
 
-const getDrinkDetail = async id => {
+export const getDrinkDetailModel = async id => {
   return await prisma.$queryRaw`
     SELECT
       d.id,
@@ -26,15 +26,18 @@ const getDrinkDetail = async id => {
       n.protein,
       n.caffeine,
       n.calorie,
-      n.sugars,
+      n.sugar
     FROM
-      drinks d,
-      images i,
+      drinks d
+    LEFT JOIN
+      images i
+    ON
+      i.drink_id = d.id
+    LEFT JOIN
       nutrition n
-    WHERE d.id = ${id}
-      AND i.drink_id = d.id
-      AND n.drink_id = d.id
+    ON
+      n.drink_id = d.id
+    WHERE
+      d.id = ${id}
   ;`;
 };
-
-export default { getDrinkList, getDrinkDetail };
