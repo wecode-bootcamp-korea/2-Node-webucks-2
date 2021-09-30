@@ -1,0 +1,87 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model Category {
+  id    Int     @id @default(autoincrement())
+  name  String
+  drink Drink[]
+
+  @@map("categories")
+}
+
+model Drink {
+  id          Int            @id @default(autoincrement())
+  categoryId  Int            @map("category_id")
+  koreanName  String         @map("korean_name")
+  englishName String         @map("english_name")
+  description String
+  category    Category       @relation(fields: [categoryId], references: [id])
+  image       Image[]
+  allergy     DrinkAllergy[]
+  nutrition   Nutrition[]
+
+  @@map("drinks")
+}
+
+model Image {
+  id       Int    @id @default(autoincrement())
+  drinkId  Int    @map("drink_id")
+  imageUrl String @map("image_url")
+  drink    Drink  @relation(fields: [drinkId], references: [id])
+
+  @@map("images")
+}
+
+model Allergy {
+  id      Int            @id @default(autoincrement())
+  name    String
+  allergy DrinkAllergy[]
+
+  @@map("allergies")
+}
+
+model DrinkAllergy {
+  id        Int     @id @default(autoincrement())
+  drinkId   Int     @map("drink_id")
+  allergyId Int     @map("allergy_id")
+  drink     Drink   @relation(fields: [drinkId], references: [id])
+  allergy   Allergy @relation(fields: [allergyId], references: [id])
+
+  @@map("drinks_allergies")
+}
+
+model Nutrition {
+  id       Int    @id @default(autoincrement())
+  drinkId  Int    @map("drink_id")
+  amount   String
+  calories Float  @db.Double
+  fat      Float  @db.Double
+  protein  Float  @db.Double
+  sodium   Float  @db.Double
+  sugars   Float  @db.Double
+  caffeine Float  @db.Double
+  drink    Drink  @relation(fields: [drinkId], references: [id])
+
+  @@map("nutritions")
+}
+
+model User {
+  id           Int     @id @default(autoincrement())
+  email        String  @unique
+  password     String
+  username     String?
+  address      String?
+  phoneNumber  String? @map("phone_number")
+  policyAgreed Boolean @default(true) @map("policy_agreed") @db.TinyInt
+
+  @@map("users")
+}
