@@ -14,14 +14,15 @@ const createUser = async (
   policy_agreed
 ) => {
   const hashPw = await bcrypt.hash(password, 10);
-  return await userDao.createUser(
+  const createUserData = {
     email,
     hashPw,
     username,
     address,
     phone_number,
-    policy_agreed
-  );
+    policy_agreed,
+  };
+  return await userDao.createUser(createUserData);
 };
 
 export default {

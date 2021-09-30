@@ -16,14 +16,15 @@ const createUser = async (req, res) => {
   try {
     const { email, password, username, address, phone_number, policy_agreed } =
       req.body;
-    const creates = await userService.createUser(
+    const createUserData = {
       email,
       password,
       username,
       address,
       phone_number,
-      policy_agreed
-    );
+      policy_agreed,
+    };
+    const creates = await userService.createUser(createUserData);
     res.status(201).json({
       message: 'SUCCESS',
       data: creates,
