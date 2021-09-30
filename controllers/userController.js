@@ -14,23 +14,15 @@ const findAllUsers = async (req, res) => {
 
 const createUser = async (req, res) => {
   try {
-    const { email, password, username, address, phone_number, policy_agreed } =
-      req.body;
-    const createUserData = {
-      email,
-      password,
-      username,
-      address,
-      phone_number,
-      policy_agreed,
-    };
-    const creates = await userService.createUser(createUserData);
-    res.status(201).json({
+    const createUserData = req.body;
+    await userService.createUser(createUserData);
+    res.status(200).json({
       message: 'SUCCESS',
-      data: creates,
     });
   } catch (err) {
-    console.log(err);
+    res.status(404).json({
+      message: 'FAILED',
+    });
   }
 };
 

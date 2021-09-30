@@ -15,14 +15,9 @@ const findAllUsers = async () => {
   `;
 };
 
-const createUser = async (
-  email,
-  hashPw,
-  username,
-  address,
-  phone_number,
-  policy_agreed
-) => {
+const createUser = async createUserData => {
+  const { email, password, username, address, phoneNumber, policyAgreed } =
+    createUserData;
   const userExist = await prisma.$queryRaw`
   SELECT * FROM 
     users
@@ -45,11 +40,11 @@ const createUser = async (
       )
     VALUES (
       ${email},
-      ${hashPw},
+      ${password},
       ${username},
       ${address},
-      ${phone_number},
-      ${policy_agreed}
+      ${phoneNumber},
+      ${policyAgreed}
     )
   `;
 };

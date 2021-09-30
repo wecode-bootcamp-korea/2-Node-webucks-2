@@ -3,24 +3,31 @@ import { productService } from '../services';
 const findAllProducts = async (req, res) => {
   try {
     const products = await productService.findAllProducts();
-    res.status(201).json({
+    res.status(200).json({
       message: 'SUCCESS',
       data: products,
     });
-  } catch (err) {
-    console.log(err);
+  } catch {
+    res.status(404).json({
+      message: 'FAILED',
+    });
   }
 };
 
 const findAllProductsDetail = async (req, res) => {
   try {
-    const productsDetail = await productService.findAllProductsDetail();
-    res.status(201).json({
+    const productsDetailData = Number(req.params.id);
+    const productsDetail = await productService.findAllProductsDetail(
+      productsDetailData
+    );
+    res.status(200).json({
       message: 'SUCCESS',
       data: productsDetail,
     });
-  } catch (err) {
-    console.log(err);
+  } catch {
+    res.status(404).json({
+      message: 'FAILED',
+    });
   }
 };
 

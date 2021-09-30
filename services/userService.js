@@ -5,23 +5,10 @@ const findAllUsers = async () => {
   return await userDao.findAllUsers();
 };
 
-const createUser = async (
-  email,
-  password,
-  username,
-  address,
-  phone_number,
-  policy_agreed
-) => {
+const createUser = async createUserData => {
+  const { password } = createUserData;
   const hashPw = await bcrypt.hash(password, 10);
-  const createUserData = {
-    email,
-    hashPw,
-    username,
-    address,
-    phone_number,
-    policy_agreed,
-  };
+  createUserData.password = hashPw;
   return await userDao.createUser(createUserData);
 };
 
